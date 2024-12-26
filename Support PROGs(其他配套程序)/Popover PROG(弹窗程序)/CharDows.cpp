@@ -1,5 +1,3 @@
-#include <windows.h>
-#include <stdio.h>
 #include <prime.h>
 
 int main(int argc, char* argv[]) {
