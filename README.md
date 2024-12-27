@@ -20,3 +20,6 @@ The predecessor of this project was a PPL program written for the HP Prime calcu
 * The compiler's compilation environment should be Unicode
 * The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details
 * Some function implementations are done by GPT
+
+地图的说明(Description of map)
+---
