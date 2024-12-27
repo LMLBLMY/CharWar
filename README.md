@@ -4,7 +4,7 @@
 
 ### POWER BY Lamoonly LMLB
 
-项目介绍(Project Introduction)
+项目介绍
 ---
 这是一个个人练习C语言的开源项目。项目的本体是一款能最多9人联机的像素抛物线游戏，其使用的引擎(或者说绘图库)是[EasyX](https://easyx.cn/)。<br>
 该项目的前身是由HP Prime计算器编写的PPL程序，其放在了[HP Prime](https://github.com/LMLBLMY/CharWar/tree/fd179399fb930c36b586a86d56f957d81ff08a70/HP)中
