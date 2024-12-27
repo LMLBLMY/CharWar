@@ -15,4 +15,8 @@ The predecessor of this project was a PPL program written for the HP Prime calcu
 ---
 * 编译器的编译环境应该为`Unicode`环境
 * 该工程并未包含`easyx.h`和`graphics.h`以及其他的`lib`文件，详细请查看[EasyX](https://easyx.cn/)官网
-* 有部分函数实现是由GPT完成的
+* 有部分函数实现是由GPT完成的<br>
+
+* The compiler's compilation environment should be Unicode
+* The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details
+* Some function implementations are done by GPT
