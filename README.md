@@ -23,3 +23,5 @@ The predecessor of this project was a PPL program written for the HP Prime calcu
 
 地图的说明(Description of map)
 ---
+地图的比例是`4:3`，有考虑到做全屏，但是那应该是之后要做的事了。`320*240`是HP Prime计算器的屏幕分辨率，与C语言版本的是兼容的(默认`768*576`)。<br>
+由于这是一个像素级游戏，*地图的大小会切实影响到游戏过程*。因为没有做全局放大(全屏)的考虑(有得我改了)。
