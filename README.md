@@ -27,3 +27,8 @@ The predecessor of this project was a PPL program written for the HP Prime calcu
 由于这是一个像素级游戏(指判定是像素级的:D)，*地图的大小会切实影响到游戏过程*。因为没有做全局放大(全屏)的考虑(有得我改了)。<br><br>
 The scale of the map is `4:3`, there is consideration of doing full screen, but that should be done later. `320*240` is the screen resolution of the HP Prime calculator, which is compatible with the C language version (the default is `768*576`). <br>
 Since this is a pixel-level game(~~__AS YOU SAID HITBOX is JUST FOUR PIXELS:(__~~ *The size of the map really affects the gameplay*. Because there is no global amplification (full screen) consideration (I have to eat bugs).
+
+存储文件的说明(Description of save files)
+---
+目前(241226)的存储文件还只是分开存储的(分成存档地图，~~回放存档~~有回放这种东西？，存档文本)
+* 关于存档文本-->  游戏数据是由`22*24`的二维数组组成的，其中第一行与第一列是空数据。(详细见)
