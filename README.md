@@ -32,3 +32,11 @@ Since this is a pixel-level game(~~__AS YOU SAID HITBOX is JUST FOUR PIXELS:(__~
 ---
 目前(241226)的存储文件还只是分开存储的(分成存档地图，~~回放存档~~有回放这种东西？，存档文本)
 * 关于存档文本-->  游戏数据是由`22*24`的二维数组组成的，其中第一行与第一列是空数据。(详细见)
+```c
+#define 数据 PlayersData
+
+PlayersData[1][1] = x1;
+PlayersData[1][2] = y1;
+数据[2][1] = y1;
+```
+~~the "数据" is same as PlayersData~~
