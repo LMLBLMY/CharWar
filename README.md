@@ -24,4 +24,6 @@ The predecessor of this project was a PPL program written for the HP Prime calcu
 地图的说明(Description of map)
 ---
 地图的比例是`4:3`，有考虑到做全屏，但是那应该是之后要做的事了。`320*240`是HP Prime计算器的屏幕分辨率，与C语言版本的是兼容的(默认`768*576`)。<br>
-由于这是一个像素级游戏，*地图的大小会切实影响到游戏过程*。因为没有做全局放大(全屏)的考虑(有得我改了)。
+由于这是一个像素级游戏(指判定是像素级的:D)，*地图的大小会切实影响到游戏过程*。因为没有做全局放大(全屏)的考虑(有得我改了)。<br><br>
+The scale of the map is `4:3`, there is consideration of doing full screen, but that should be done later. `320*240` is the screen resolution of the HP Prime calculator, which is compatible with the C language version (the default is `768*576`). <br>
+Since this is a pixel-level game(~~__AS YOU SAID HITBOX is JUST FOUR PIXELS:(__~~ *The size of the map really affects the gameplay*. Because there is no global amplification (full screen) consideration (I have to eat bugs).
