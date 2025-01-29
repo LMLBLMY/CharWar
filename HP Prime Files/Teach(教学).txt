@@ -1,0 +1,1719 @@
+EXPORT Teach()  //V1.0 V5.30
+BEGIN
+LOCAL Black,v0,xp,yp,vx,vy;
+LOCAL Play,t,x0,y0,Dir,Sua,Direct,a;
+LOCAL x1,y1,AFlue1,Flue1,Poi1,Lp1,Skill,Players;
+LOCAL x2,y2,AFlue2,Flue2,Poi2,Lp2,d1,d2;
+LOCAL x3,y3,AFlue3,Flue3,Poi3,Lp3,d3,d9;
+LOCAL Inj,Round,Bomb,Cost,ax,ay,r,Rep;
+LOCAL Pack,x9,y9,SinP,Shield1,Shield2,Shield3,times;
+LOCAL TStep,Ref1,Ref2,Ref3,Move1,Move2,Move3;
+16763080▶Black; K:=0;
+ RECT; DIMGROB(G1,32,24);
+ TEXTOUT("这个是CharWar(文字战争)的教学程序",-13,2,4,RGB(100,200,180));
+ TEXTOUT("它将教你一些CharWar的入门ˌ进阶和技能的使用",-15,0,3,RGB(100,200,180));
+ TEXTOUT("点击任意键来继续",-6,-9,4);
+ WAIT; Z:=2; TStep:=1;
+ CHOOSE(Z,"你已经掌握基本的操作了吗","是,现在开始学习技能的使用","否,现在开始学习基本的操作");
+ IF Z=1 THEN TStep:=9; Skill:=-1; K:=30; x1:=-99; x2:=-99; -2.6▶y1▶y2; END;
+IF TStep=1 THEN
+x2:=-1; y2:=12;
+REPEAT
+  IF GETPIX(x2+0.2,y2-1.4)≠Black AND GETPIX(x2+1,y2-1.4)≠Black THEN
+  RECT(x2,y2,x2+1.3,y2-1.2);
+  y2-0.1▶y2; t:=t+0.1;
+  TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+  END;
+  IF t=14 THEN
+  TEXTOUT("这个是落踋点",G1,-5,-6,4,RGB(100,200,180),200,RGB(255,200,200));
+  BLIT(G1);
+  RECT(-16,2,16,-2);
+  TEXTOUT("这个是  你",-3.5,2,3,RGB(50,150,255));
+  TEXTOUT("你将控制 '你' ",-4,0,3,RGB(100,200,180));
+  END;
+UNTIL GETPIX(x2+0.2,y2-1.4)=Black OR GETPIX(x2+1,y2-1.4)=Black OR y2≤-16
+END;
+TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+END;
+
+0▶R▶V▶T; Pack:=-1; -99▶y9▶x3▶y3; 1▶Play▶Bomb; 125▶Inj; 20▶θ; 1▶Dir▶M9(10,4); 10▶v0; 20▶d1▶d2▶d3▶d9▶M9(10,5);
+10▶Flue1▶Flue2; 40▶AFlue1▶AFlue2; 4800▶Lp1▶Lp2; 2▶Players;
+2▶Poi1▶Poi2; Sua:=0; S:=0; a:=2; Direct:=1;
+[[0,0,0,2,1,2,1,6,1,4,0,2,0,1,2,3,3,4,2,4,3],
+[0,0,0,2,1,2,1,6,1,4,0,2,0,1,2,3,3,4,2,4,3]]▶M9;
+-99▶M9(10,1); -99▶M9(10,2); 0▶M9(10,3); 1▶M9(11,1); -99▶M9(11,4);
+Cover;
+
+REPEAT
+IF Lp1>0 AND y1>-16 AND (TStep≥2 OR TStep≤0) THEN
+  IF GETPIX(x1+0.2,y1-1.4)≠Black AND GETPIX(x1+1,y1-1.4)≠Black THEN
+  RECT(x1,y1,x1+1.3,y1-1.2);
+  y1-0.1▶y1;
+  TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+  END;
+END;
+IF Lp2>0 AND y2>-16 THEN
+  IF GETPIX(x2+0.2,y2-1.4)≠Black AND GETPIX(x2+1,y2-1.4)≠Black THEN
+  RECT(x2,y2,x2+1.3,y2-1.2);
+  y2-0.1▶y2;
+  TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+  END;
+END;
+
+IF SinP≠0 THEN
+ IF GETPIX(x9-.4,y9-1.1)≠Black AND GETPIX(x9+.4,y9-1.1)≠Black THEN
+   y9:=y9-0.1;
+   IF y9≤-16 THEN SinP:=0; -99▶x9▶y9; END;
+   TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200),100,RGB(255,255,255));
+ END;
+END;
+
+IF M9(10,3)>0 AND r≠-.3 AND r≠6.1 AND M9(10,4)=0 AND V≠3.33 THEN
+ IF Lp1>0 THEN (ROUND(x1,1)-M9(10,1))*ROUND(y1,1)▶M9(5,8);  END; IF Lp2>0 THEN (ROUND(x2,1)-M9(10,1))*ROUND(y2,1)▶M9(5,9); END; IF Lp3>0 THEN (ROUND(x3,1)-M9(10,1))*ROUND(y3,1)▶M9(5,10); END;
+IF M9(5,11)=1 THEN M9(5,4)▶M9(5,8); END; IF M9(5,11)=2 THEN M9(5,5)▶M9(5,9); END; IF M9(5,11)=3 THEN M9(5,6)▶M9(5,10); END;
+  IF (M9(5,4)≠M9(5,8) AND Lp1>0) OR (M9(5,5)≠M9(5,9) AND Lp2>0) OR (M9(5,6)≠M9(5,10) AND Lp3>0) THEN
+     IF M9(5,4)≠M9(5,8) AND Lp1>0 THEN X:=x1+.6; Y:=y1-.6; END;
+     IF M9(5,5)≠M9(5,9) AND Lp2>0 THEN X:=x2+.6; Y:=y2-.6; END;
+     IF M9(5,6)≠M9(5,10) AND Lp3>0 THEN X:=x3+.6; Y:=y3-.6; END;
+     M9(10,7):=0; M9(10,8):=0; M9(10,9):=0; 
+ //L:=(Y-M9(10,2))/(X-M9(10,1));
+   IF X≥M9(10,1) THEN M9(10,12):=1; ELSE M9(10,12):=-1; END;
+ Z:=0; Inj:=35; M9(10,13):=0; IF X=M9(10,1) THEN X:=M9(10,1)+0.01; END;
+ M9(10,10):=COS(ATAN(M9(10,12)*(Y-M9(10,2))/(X-M9(10,1))))*30; M9(10,11):=SIN(ATAN(M9(10,12)*(Y-M9(10,2))/(X-M9(10,1))))*30;
+   IF M9(10,6)≠0 THEN Inj:=28; END;
+  WHILE Z<6 DO
+// TEXTOUT([M9(10,1),M9(10,2)],-15.6,-3,2,RGB(0,0,0),300,RGB(255,255,255),Made by LMLB);
+  IF -17≤xp AND xp≤17 THEN
+   //  IF M9(10,1)≥X THEN xp:=xp-0.2; ELSE xp:=xp+0.2; END;  yp:=L*(xp-X)+Y-0.5;
+   M9(10,13):=M9(10,13)+0.02;
+   xp:=M9(10,1)+M9(10,12)*M9(10,10)*M9(10,13); yp:=M9(10,2)+M9(10,11)*M9(10,13);
+   TEXTOUT("炮",xp-.5,yp+.5,1,RGB(50,50,50),100,RGB(255,255,255));
+   ELSE xp:=M9(10,1); yp:=M9(10,2);
+  END;
+   //d1:=√((X+.5-xp)^2+(Y-.5-yp)^2);
+   IF (ABS(X-xp)≤0.8 AND ABS(Y-yp)≤0.8) OR GETPIX(xp-.7,yp+.7)=Black OR GETPIX(xp+0.6,yp+0.7)=Black OR GETPIX(xp-0.7,yp-.4)=Black OR GETPIX(xp+0.6,yp-0.4)=Black THEN
+ Z:=Z+1; M9(10,13):=0;
+ d1:=√((x1+.5-xp)^2+(y1-.5-yp)^2);
+ d2:=√((x2+.5-xp)^2+(y2-.5-yp)^2);
+ d3:=√((x3+.5-xp)^2+(y3-.5-yp)^2);
+   ARC(G1,xp,yp+.1,10,{RGB(255,255,255),RGB(255,255,255)});
+   BLIT(G1);
+   TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+   TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+   TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+   IF d1≤1.2 OR d2≤1.2 OR d3≤1.2 THEN
+   M9(4,M9(5,11)+1):=M9(4,M9(5,11)+1)+Inj; M9(4,1):=M9(4,1)+Inj;
+    IF d1≤1.2 THEN M9(10,7):=M9(10,7)+Inj; 
+     IF Shield1≥Inj THEN Shield1:=Shield1-Inj; ELSE Lp1:=Lp1+Shield1-Inj; Shield1:=0; END;
+     TEXTOUT(M9(10,7),x1,y1+1,2,RGB(150,50,0)); END;
+    IF d2≤1.2 THEN M9(10,8):=M9(10,8)+Inj; 
+     IF Shield2≥Inj THEN Shield2:=Shield2-Inj; ELSE Lp2:=Lp2+Shield2-Inj; Shield2:=0; END;
+     TEXTOUT(M9(10,8),x2,y2+1,2,RGB(150,50,0)); END; 
+    IF d3≤1.2 THEN M9(10,9):=M9(10,9)+Inj;
+     IF Shield3≥Inj THEN Shield3:=Shield3-Inj; ELSE Lp3:=Lp3+Shield3-Inj; Shield3:=0; END;
+     TEXTOUT(M9(10,9),x3,y3+1,2,RGB(150,50,0)); END;
+   END;
+   xp:=M9(10,1); yp:=M9(10,2); Inj:=35;
+        IF Z=6 THEN Sua:=0; M9(10,4):=1; Z:=0; 20▶d1▶d2▶d3; BREAK; END;
+   END;
+ // WAIT(0.0001);WAIT;
+  END;  //LOOP
+ END;
+END;
+
+IF (ISKEYDOWN(30) AND Play=2 AND TStep≠7) OR K=30 OR K=30.2 THEN
+   IF M9(10,3)>0 THEN (ROUND(x1,1)-M9(10,1))*ROUND(y1,1)▶M9(5,4);  (ROUND(x2,1)-M9(10,1))*ROUND(y2,1)▶M9(5,5); (ROUND(x3,1)-M9(10,1))*ROUND(y3,1)▶M9(5,6); END;
+   IF Skill=-1 OR Skill=-2 THEN IF Skill=-2 THEN M9(5,13):=Skill; END; 1▶Bomb▶R; 99▶xp▶yp; END;
+IF M9(5,13)≠-2 THEN
+BLIT(G1);
+TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+END;
+   IF Dir≠1 AND Dir≠-1 THEN Dir:=1; END;
+ IF Skill=9 THEN vx:=v0*COS(θ); vy:=v0*SIN(θ); T:=0; X:=x0; Y:=y0; WAIT(.22); END;
+IF (Skill≠0 AND times=0) OR (Skill=21 AND FP(times/3)=0 AND times≠9) THEN
+Skill▶M9(5,13);
+IF Skill=7 OR Skill=18 THEN x0▶M9(5,14); y0▶M9(5,15); END;
+ IF Skill=2 OR Skill=4 OR Skill=5 OR Skill=6 OR Skill=9 OR Skill=10 OR Skill=12 OR Skill=15 OR Skill=14 OR Skill=16 OR Skill=17 OR Skill=18 OR Skill=21 THEN 1▶Rep;
+       IF Skill≠6 AND Skill≠9 AND Skill≠15 AND Skill≠14 AND Skill≠7 AND Skill≠16 AND Skill≠21 THEN 0▶x0; 0▶y0; WAIT(0.3); ELSE IF T=0 THEN X:=x0; Y:=y0; ax:=Dir; 0▶Bomb; 1▶Rep; END; END;
+     IF Skill=16 OR Skill=21 THEN
+       IF times≥1 THEN x0:=M9(5,14)-.6; y0:=M9(5,15)+.6; END;
+       x0:=x0+.6; X:=x0+.6+Dir*5; Rep:=-1; Y:=y0+0.05;
+         IF Skill=21 THEN Inj:=63; K:=0; Y:=y0-.6+0.05; y0:=y0-.6; END;
+     θ:=ATAN(Dir*(Y-y0)/(X-x0));
+     LINE(X-.4,Y,X+.4,Y,RGB(0,255,200)); LINE(X,Y+.4,X,Y-.4,RGB(0,255,200)); ARC(X,Y,6,RGB(0,0,0));
+     WAIT(0.25);
+     END; // 16/21
+ 0▶Bomb; IF Skill=15 OR Skill=6 THEN WAIT(0.3); END;
+ 
+IF TStep=-4 THEN x0:=x2-3; y0:=y2+2; Dir:=1; END;
+IF TStep=-5 OR TStep=-17 THEN x0:=x2+0.5; y0:=y2+3; END;
+IF TStep=-6 OR TStep=-16 OR TStep=-21 THEN K:=-1; ax:=1; END;
+IF TStep=-12 THEN x0:=x2-1; y0:=y2+3; K:=-1; END;
+IF TStep=-18 THEN  x2▶X▶x0; y2▶Y▶y0; K:=-1; END; 
+ REPEAT
+  IF Skill≠6 AND Skill≠9 AND Skill≠15 AND Skill≠14 AND Skill≠16 AND Skill≠21 THEN
+  IF MOUSE(0)≠-1 AND MOUSE(1)≠-1 THEN MOUSE(0)/10-16▶x0; 10.9-MOUSE(1)/11▶y0; BLIT(G1); END;
+   IF ISKEYDOWN(7) AND x0≥-16 THEN  x0:=x0-0.1; BLIT(G1); END; 
+   IF ISKEYDOWN(8) AND x0≤16 THEN  x0:=x0+0.1; BLIT(G1); END;
+   IF ISKEYDOWN(2) AND y0≤11 THEN  y0:=y0+0.1; BLIT(G1); END;
+   IF ISKEYDOWN(12) AND y0≥-13 THEN y0:=y0-0.1; BLIT(G1); END;
+  END;
+  
+  IF Skill=15 THEN
+    IF TStep=-15 THEN
+     IF X<x0+3 OR Y<y0+2 THEN
+      IF X<x0+3 THEN K:=8; TEXTOUT("按下: 轮盘右",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.01); END;
+      IF Y<y0+2 THEN K:=2; TEXTOUT("按下: 轮盘上",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.01); END;
+     ELSE K:=30;
+     TEXTOUT("2.按下:  Enter",-15.6,-2,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.5); 
+     END;
+    END;
+   IF (ISKEYDOWN(7) OR K=7) AND X≥x0-2 THEN  X-0.1▶X▶M9(10,1); BLIT(G1); END; 
+   IF (ISKEYDOWN(8) OR K=8) AND X≤x0+3 THEN  X+0.1▶X▶M9(10,1); BLIT(G1); END;
+   IF (ISKEYDOWN(2) OR K=2) AND Y≤y0+2 THEN  Y+0.1▶Y▶M9(10,2); BLIT(G1); END;
+   IF (ISKEYDOWN(12) OR K=12) AND Y≥y0-3 THEN Y-0.1▶Y▶M9(10,2); BLIT(G1); END;
+  END;
+IF Skill=16 OR Skill=21 THEN
+ IF Skill=21 THEN I:=Inj;
+   IF TStep=-21 THEN
+   IF -3<θ THEN
+    IF -3<θ THEN K:=12;  TEXTOUT("按下: 轮盘下  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Shield1>0 THEN K:=50; TEXTOUT("按下: +键   ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.2); END; 
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+   ELSE K:=30; END;
+   END;
+     IF ISKEYDOWN(50) OR K=50 THEN
+      IF Play=1 AND Shield1≥100 THEN Shield1:=Shield1-100; Inj:=Inj+40; END;
+      IF Play=2 AND Shield2≥100 THEN Shield2:=Shield2-100; Inj:=Inj+40; END;
+      IF Play=3 AND Shield3≥100 THEN Shield3:=Shield3-100; Inj:=Inj+40; END;
+      RECT(-15.6,11,5,9.5);
+      TEXTOUT(IP((Inj-63)/40)+"次为枪充能,伤害： "+Inj,-15.6,11,2,RGB(160,180,255));
+      WAIT(0.2);
+     END;
+     IF ISKEYDOWN(45) THEN
+      IF Play=1 AND Inj>63 THEN Shield1:=Shield1+100; Inj:=Inj-40; END;
+      IF Play=2 AND Inj>63 THEN Shield2:=Shield2+100; Inj:=Inj-40; END;
+      IF Play=3 AND Inj>63 THEN Shield3:=Shield3+100; Inj:=Inj-40; END;
+      RECT(-15.6,11,5,9.5);
+      TEXTOUT(IP((Inj-63)/40)+"次为枪充能,伤害： "+Inj,-15.6,11,2,RGB(160,180,255));
+      WAIT(0.2);
+     END;
+  END;
+  IF TStep=-16 THEN
+   IF -3<θ THEN
+    IF -3<θ THEN K:=12;  TEXTOUT("按下: 轮盘下  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+   ELSE K:=30;
+   END;
+  END;
+   IF ISKEYDOWN(2) OR ISKEYDOWN(12) OR K=2 OR K=12 OR K=40 OR ISKEYDOWN(40) THEN
+   BLIT(G1);
+     IF (ISKEYDOWN(2) OR K=2) AND Y≤y0+4.95 THEN Y:=Y+.1; END;
+     IF (ISKEYDOWN(12) OR K=12) AND Y≥y0-4.95 THEN Y:=Y-.1; END; 
+   IF Y≥y0+5 OR Y≤y0-5 THEN Y:=y0+0.05; Dir:=-Dir; END;
+   IF ISKEYDOWN(40) OR K=40 THEN Dir:=-Dir; WAIT(0.2); END;
+  X:=x0+Dir*√(5^2-(Y-y0)^2);
+  LINE(X-.4,Y,X+.4,Y,RGB(0,255,200)); LINE(X,Y+.4,X,Y-.4,RGB(0,255,200)); ARC(X,Y,6,RGB(0,0,0));
+  //TEXTOUT(IP(ATAN(Dir*(Y-y0)/(X-x0))),-15.8,3.8,3,RGB(120,120,120),200,RGB(255,255,255));
+   IF ABS(Y-y0)≤4.2 THEN WAIT(0.03); ELSE WAIT(0.07); END;
+  θ:=ATAN(Dir*(Y-y0)/(X-x0));
+   LINE(x0,y0,X,Y);
+  END;
+END;  //  21//16
+   TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+   TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+   TEXTOUT("他",x3,y3,3,RGB(200,160,180)); 
+   TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200));
+   TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100));
+ IF Skill=9 THEN
+     IF ISKEYDOWN(30)=1 THEN Rep:=-1; ELSE Rep:=1; END;
+     IF TStep=-9 AND Y≤-16 THEN TEXTOUT("1.按下:  Enter",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(1.5); Rep:=-1; END;
+  IF ISKEYDOWN(2) OR ISKEYDOWN(12) OR ISKEYDOWN(50) OR ISKEYDOWN(45) OR ISKEYDOWN(40) THEN
+   IF ISKEYDOWN(2) THEN θ:=θ+1; END; IF ISKEYDOWN(12) THEN θ:=θ-1; END;
+   IF θ>80 OR θ<-60 THEN θ:=45; END;
+   IF ISKEYDOWN(50) AND v0<24 THEN v0:=v0+1; END; IF ISKEYDOWN(45) AND v0>5 THEN v0:=v0-1; END;
+   IF ISKEYDOWN(40) THEN Dir:=-Dir; WAIT(.2); END;
+  X:=x0; Y:=y0; T:=0; BLIT(G1); vx:=v0*COS(θ); vy:=v0*SIN(θ);
+  RECT(-16,11,-13.5,10.5); TEXTOUT(θ,-15.8,11,3,RGB(120,120,120));
+  WAIT(.02);
+  END;   //down key
+   IF Y>-16 THEN  T:=T+0.2;
+   X:=x0+Dir*vx*T;  Y:=y0+.5+vy*T-5.5*T^2;
+   ARC(X,Y,2);
+   END;
+ END;
+ IF Skill=2 OR Skill=10 THEN
+   ARC(x0+0.5,y0-0.5,10);
+  IF GETPIX(x0+.5,y0-.5)≠Black AND GETPIX(x0+.5,y0-1.3)≠Black THEN -1▶Rep; ELSE Rep:=1; END;
+ END;
+ IF Skill=4 THEN Rep:=-1;
+  IF ISKEYDOWN(40) THEN Dir:=-Dir; WAIT(0.2); END;
+   IF Dir=-1 THEN
+    TEXTOUT("⇙⇙⇙",x0-3.5,y0,3,RGB(200,180,255));
+   ELSE 
+    TEXTOUT("⇘⇘⇘",x0,y0,3,RGB(200,180,255)); 
+   END;
+   IF TStep=-4 THEN
+   TEXTOUT("1.按下:  点击如光标处屏幕",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255));  WAIT(1.5);
+   TEXTOUT("2.按下:  Enter",-15.6,-2,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.5);
+   END;
+ END;
+ IF Skill=5 OR Skill=17 THEN
+  Rep:=-1;
+  TEXTOUT("⇩",x0-.5,y0,3,RGB(200,180,255));
+  IF TStep=-5 OR TStep=-17 THEN
+  TEXTOUT("1.按下:  点击如光标处屏幕",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255));  WAIT(1.5); 
+  TEXTOUT("2.按下:  Enter",-15.6,-2,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.5);
+  END;
+ END;
+ IF Skill=6 OR Skill=14 THEN
+WAIT(0.01);
+IF Skill=6 THEN Rep:=-1; T+0.01▶T;
+ IF T≥5 THEN TEXTOUT(TRUNCATE(8-T,1),X-.1,Y+1.1,2,RGB(50,80,255),100,RGB(255,255,255)); END;
+ IF T=8 THEN K:=30; END;
+IF FP(T/0.2)=0 THEN IP(RANDOM(-2,1))▶ax; END;
+ELSE  // SKILL 14
+T:=T+0.01;
+distance({X,Y},{x1+.5,y1-.5})▶d1;
+distance({X,Y},{x2+.5,y2-.5})▶d2;
+distance({X,Y},{x3+.5,y3-.5})▶d3;
+IF T≥0.2 AND (d1≤1.3 OR d2≤1.3 OR d3≤1.3) THEN
+Dir:=-ax; TRUNCATE(RANDOM(72,76),1)▶θ; TRUNCATE(RANDOM(6,8),1)▶v0;
+ 1▶Bomb; xp:=X+.5; yp:=Y-.5; Inj:=200; R:=1; a:=0; Rep:=-1; r:=2.1; T:=T+1;
+ M9(13,13):=x1; M9(13,14):=y1; M9(13,15):=x2; M9(13,16):=y2; M9(13,17):=x3; M9(13,18):=y3;//插个眼
+END;
+ IF T≥3 OR X≤-16.5 OR X≥16.5 THEN T:=10; Break; ELSE 
+  TEXTOUT("时间: "+T,-15.6,10.9,3,RGB(255,50,50),200,RGB(255,255,255)); END;
+ END;
+  IF GETPIX(X+0.2,Y-1.4)≠Black AND GETPIX(X+1,Y-1.4)≠Black THEN
+  Y-0.1▶Y;
+  END;
+IF ax=-1 THEN
+      IF GETPIX(X-0.2,Y-0.4)≠Black THEN X-0.1▶X;
+        IF X≤-16.5 OR X≥16.5 OR Y≤-16 THEN T:=10; 0▶Bomb; -1▶Rep; END;
+      ELSE
+ IF Skill=14 THEN
+  1▶Bomb; xp:=X+.6; yp:=Y-.6; Inj:=120; R:=1; a:=0; Rep:=-1; r:=2; T:=T+0.5;
+  END; END;
+ELSE
+      IF GETPIX(X+1.5,Y-0.4)≠Black THEN X+0.1▶X;
+        IF X≤-16.5 OR X≥16.5 OR Y≤-16 THEN T:=10; -1▶Rep; 0▶Bomb; END;
+      ELSE
+ IF Skill=14 THEN 
+  1▶Bomb; xp:=X+.6; yp:=Y-.6; Inj:=120; R:=1; a:=0; Rep:=-1; r:=2; T:=T+0.5;
+  END; END;
+END;
+
+IF GETPIX(X+1.3,Y-1.4)=Black OR GETPIX(X+.2,Y-1.4)=Black THEN Y+0.2▶Y; END; 
+ RECT(X,Y-0.3,X+1.3,Y-1.2);
+ IF Skill=6 THEN TEXTOUT("羊",X,Y,3,RGB(255,50,50));
+  ELSE TEXTOUT("牛",X,Y,3,RGB(200,100,50));
+ END;
+   IF TStep=-6 AND Skill=6 AND T=0.2 THEN
+   TEXTOUT("1.按下:  Enter",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(1.5); 
+   Rep:=-1; K:=30;
+   END;
+END;   // 6/14
+IF Skill=12 THEN
+  Rep:=-1;
+  TEXTOUT("↓↓↓↓↓↓↓↓↓↓↓↓",x0-4.5,y0,3,RGB(200,180,255));
+   IF TStep=-12 THEN K:=30;
+    TEXTOUT("1.按下:  点击如光标处屏幕",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255));  WAIT(1.5); 
+    TEXTOUT("2.按下:  Enter",-15.6,-2,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.5);
+   END;
+END;
+IF Skill=15 THEN
+  M9(10,3):=500; M9(10,1):=X; M9(10,2):=Y; M9(10,6):=0;
+    IF GETPIX(X+.2,Y-.2)≠Black THEN -1▶Rep; ELSE Rep:=1; END;
+   ARC(X,Y,8); 
+END;
+IF Skill=18 THEN X:=x0; Y:=y0; Rep:=-1;
+LINE(x0-.5,y0,x0+.5,y0,RGB(255,130,130));LINE(x0,y0-.5,x0,y0+.5,RGB(255,130,130));
+ IF TStep=-18 THEN K:=30;
+  TEXTOUT("1.按下:  点击如光标处屏幕",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255));  WAIT(1.5); 
+  TEXTOUT("2.按下:  Enter",-15.6,-2,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.5);
+ END;
+END;
+   WAIT(0.01);
+  UNTIL (ISKEYDOWN(30)=1 OR Skill=14 OR K=30) AND Rep=-1
+  END;
+//   ................   //
+  IF Skill=2 OR Skill=10 THEN 
+    IF Play=1 THEN x1:=x0; y1:=y0; END;
+    IF Play=2 THEN x2:=x0; y2:=y0; END;
+    IF Play=3 THEN x3:=x0; y3:=y0; END;
+  END; 
+  IF Skill=10 THEN TEXTOUT("大平台",G1,x0-1.8,y0-1.6,4,RGB(150,0,150),200,RGB(255,200,200)); END;
+  IF Skill=4 THEN
+   vx:=2; vy:=1.2; Y:=y0+20; ax:=.8; ay:=.4; 1▶t; Rep:=1;
+   X:=x0-30*Dir;
+  END;
+  IF Skill=5 OR Skill=17 THEN Rep:=1; Y:=12; X:=x0+0.1; END;
+  IF Skill=12 THEN Rep:=1; X:=x0; y0:=12; 1▶Bomb; θ:=-90; v0:=50; Inj:=85; r:=-8; R:=0; a:=0; END;
+  IF Skill=6 THEN Rep:=1; 1▶Bomb; R:=0; v0:=0.2; θ:=90; END;
+END;  //Skill  2/4/5/6/17/18
+
+M9(13,19):=0; M9(13,20):=0; M9(13,21):=0;
+IF Skill=-1 THEN  
+ IF Play=1 THEN AFlue1:=AFlue1+3; Poi1:=Poi1+1; TEXTOUT("+3",x1,y1+1,2,RGB(250,200,200)); END;
+ IF Play=2 THEN AFlue2:=AFlue2+3; Poi2:=Poi2+1; TEXTOUT("+3",x2,y2+1,2,RGB(250,200,200)); END;
+ IF Play=3 THEN AFlue3:=AFlue3+3; Poi3:=Poi3+1; TEXTOUT("+3",x3,y3+1,2,RGB(250,200,200)); END;
+ WAIT(0.25);
+END;
+IF Skill=1 THEN Inj:=250; r:=0; END;
+IF Skill=13 THEN
+ IF Play=1 THEN Ref1:=1; END;
+ IF Play=2 THEN Ref2:=1; END;
+ IF Play=3 THEN Ref3:=1; END;
+END;
+IF Skill=14 THEN
+ M9(13,13):=x1; M9(13,14):=y1;
+ M9(13,15):=x2; M9(13,16):=y2;
+ M9(13,17):=x3; M9(13,18):=y3;
+END;
+  IF Skill=16 THEN Inj:=250; r:=1; v0:=40; x0:=x0+.5; Bomb:=1; R:=0; END;
+  IF Skill=17 THEN Inj:=380; r:=2; a:=0; t:=0; END;
+  IF Skill=18 THEN Inj:=420; r:=0; M9(5,14)▶x0; M9(5,15)▶y0; Bomb:=1; R:=0; END;
+  IF Skill=21 THEN r:=-6.5; v0:=12; END;
+IF Skill=20 THEN 0▶R▶Bomb; RECT(G1,x0+.7+Dir,y0+3,x0+.7+Dir*3,y0-4.4,RGB(255,200,200)); END;
+IF Skill=9 THEN A:=9; Inj:=250;
+ IF Play=1 THEN d1:=0; 20▶d2▶d3; M9(13,13):=x1; M9(13,14):=y1; END;
+ IF Play=2 THEN d2:=0; 20▶d1▶d3; M9(13,15):=x2; M9(13,16):=y2; END;
+ IF Play=3 THEN d3:=0; 20▶d2▶d1; M9(13,17):=x3; M9(13,18):=y3; END;
+END;  //9
+IF Skill=11 THEN v0:=10; θ:=80; A:=0; Bomb:=0;
+20▶d1▶d2▶d3;
+ IF Play≠1 THEN M9(13,13):=x1; M9(13,14):=y1; d1:=√((x1-x0)^2+(y1-y0)^2); END;
+ IF Play≠2 THEN M9(13,15):=x2; M9(13,16):=y2; d2:=√((x2-x0)^2+(y2-y0)^2); END;
+ IF Play≠3 THEN M9(13,17):=x3; M9(13,18):=y3; d3:=√((x3-x0)^2+(y3-y0)^2); END;
+END;  // 11
+IF Skill=3 THEN Inj:=300; a:=0; r:=1.5; END;
+IF Skill=7 THEN a:=0; r:=0; END;
+IF Skill=12 THEN Inj:=85; r:=-8; END;
+IF Skill=19 THEN Inj:=200; M9(5,16):=Inj; r:=1; END;
+
+IF r=2.1 THEN R:=-1; x0:=xp; y0:=yp; END;
+IF Skill=9 OR Skill=11 OR Skill=14 THEN
+  IF d1>1.5 THEN M9(13,19):=1; END;
+  IF d2>1.5 THEN M9(13,20):=1; END;
+  IF d3>1.5 THEN M9(13,21):=1; END;
+  IF V≠3.33 THEN
+    M9(13,1):=v0*COS(θ);M9(13,2):=v0*SIN(θ);
+    M9(13,5):=v0*COS(θ);M9(13,6):=v0*SIN(θ);
+    M9(13,9):=v0*COS(θ);M9(13,10):=v0*SIN(θ);
+  END;
+ M9(13,3):=0;M9(13,7):=0;M9(13,11):=0;
+ M9(13,4):=0;M9(13,8):=0;M9(13,12):=0;
+ IF d1>1.5 AND d2>1.5 AND d3>1.5 THEN R:=1; END;
+ REPEAT
+ IF d1≤1.5 AND y1>-16 AND M9(13,19)=0 THEN 
+  M9(13,3):=M9(13,3)+0.01; M9(13,4):=M9(13,4)+0.01;
+  y1:=M9(13,14)+0.5+M9(13,2)*M9(13,4)-5.5*M9(13,4)^2;
+  IF (y1≥y0+0.49+M9(13,2)^2/22 OR GETPIX(x1+.7,y1+.1)=Black) AND A=9 THEN Inj:=Inj*6*(y1-y0)/96+M9(13,1)^2+M9(13,2)^2; TRUNCATE(Inj,2)▶Inj; A:=0; END;
+  x1:=M9(13,13)+Dir*M9(13,1)*M9(13,3);
+    IF GETPIX(x1+1.4,y1-.7)=Black OR GETPIX(x1-.1,y1-.7)=Black THEN -ABS(.5*M9(13,1))▶M9(13,1); M9(13,13):=x1; M9(13,3):=0; END;
+    IF GETPIX(x1+.7,y1+.1)=Black THEN -ABS(.8*M9(13,2))▶M9(13,2); M9(13,14):=y1-.5; M9(13,4):=0; END;
+  IF GETPIX(x1+1,y1-1.6)=Black OR y1<-16 OR GETPIX(x1+.3,y1-1.6)=Black THEN 
+  1▶M9(13,19);
+   IF Skill=9 THEN xp:=x1+0.7; yp:=y1-0.7; END;
+  END;
+ TEXTOUT("我",x1,y1,3,RGB(150,230,180),100,RGB(255,255,255));
+ END;
+ IF d2≤1.5 AND y2>-16 AND M9(13,20)=0 THEN
+  M9(13,7):=M9(13,7)+0.01; M9(13,8):=M9(13,8)+0.01;
+  y2:=M9(13,16)+0.5+M9(13,6)*M9(13,8)-5.5*M9(13,8)^2;
+  IF (y2≥y0+0.49+M9(13,6)^2/22 OR GETPIX(x2+.7,y2+.1)=Black) AND A=9 THEN Inj:=Inj*6*(y2-y0)/96+M9(13,5)^2+M9(13,6)^2; TRUNCATE(Inj,2)▶Inj; A:=0; END;
+  x2:=M9(13,15)+Dir*M9(13,5)*M9(13,7);
+    IF GETPIX(x2+1.4,y2-.7)=Black OR GETPIX(x2-.1,y2-.7)=Black THEN -ABS(.5*M9(13,5))▶M9(13,5); M9(13,15):=x2; M9(13,7):=0; END;
+    IF GETPIX(x2+.7,y2+.1)=Black THEN -ABS(.8*M9(13,6))▶M9(13,6); M9(13,16):=y2-.5; M9(13,8):=0; END;
+  IF GETPIX(x2+1,y2-1.6)=Black OR y2<-16 OR GETPIX(x2+.3,y2-1.6)=Black THEN 
+  1▶M9(13,20);
+    IF Skill=9 THEN xp:=x2+.7; yp:=y2-.7; END;
+  END;
+ TEXTOUT("你",x2,y2,3,RGB(50,150,255),100,RGB(255,255,255)); 
+ END; 
+ IF d3≤1.5 AND y3>-16 AND M9(13,21)=0 THEN
+  M9(13,11):=M9(13,11)+0.01; M9(13,12):=M9(13,12)+0.01;
+  y3:=M9(13,18)+0.5+M9(13,10)*M9(13,12)-5.5*M9(13,12)^2;
+  IF (y3≥y0+0.49+M9(13,10)^2/22 OR GETPIX(x3+.7,y3+.1)=Black) AND A=9 THEN Inj:=Inj*6*(y3-y0)/96+M9(13,9)^2+M9(13,10)^2; TRUNCATE(Inj,2)▶Inj; A:=0; END;
+  x3:=M9(13,17)+Dir*M9(13,9)*M9(13,11);
+    IF GETPIX(x3+1.4,y3-.7)=Black OR GETPIX(x3-.1,y3-.7)=Black THEN -ABS(.5*M9(13,9))▶M9(13,9); M9(13,17):=x3; M9(13,11):=0; END;
+    IF GETPIX(x3+.7,y3+.1)=Black THEN -ABS(.8*M9(13,10))▶M9(13,10); M9(13,18):=y3-.5; M9(13,12):=0; END;
+  IF GETPIX(x3+1,y3-1.6)=Black OR y3<-16 OR GETPIX(x3+.3,y3-1.6)=Black THEN 
+  1▶M9(13,21);
+   IF Skill=9 THEN xp:=x3+.7; yp:=y3-.7; END;
+  END;
+  TEXTOUT("他",x3,y3,3,RGB(200,160,180),100,RGB(255,255,255)); 
+ END;
+ UNTIL M9(13,19)=1 AND M9(13,20)=1 AND M9(13,21)=1 END;
+     //TEXTOUT([Inj],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT;
+ IF d1≤1.5 THEN M9(4,1):=M9(4,1)+200; M9(4,Play+1):=M9(4,Play+1)+200; M9(4,5):=M9(4,5)+200; Lp1:=Lp1-200; TEXTOUT("200",x1,y1+1,2,RGB(150,50,0));WAIT(0.05); END;
+ IF d2≤1.5 THEN M9(4,1):=M9(4,1)+200; M9(4,Play+1):=M9(4,Play+1)+200; M9(4,6):=M9(4,6)+200; Lp2:=Lp2-200; TEXTOUT("200",x2,y2+1,2,RGB(150,50,0));WAIT(0.05); END;
+ IF d3≤1.5 THEN M9(4,1):=M9(4,1)+200; M9(4,Play+1):=M9(4,Play+1)+200; M9(4,7):=M9(4,7)+200; Lp3:=Lp3-200; TEXTOUT("200",x3,y3+1,2,RGB(150,50,0));WAIT(0.05); END;
+IF Skill=9 THEN 1▶Bomb▶R; r:=3.1; Rep:=-1; END;
+END; //  9/11
+ IF Skill=4 OR Skill=5 OR Skill=6 OR Skill=17 THEN
+   REPEAT
+  IF Skill=4 THEN  WAIT(0.01);t:=t+0.01;
+   RECT(X,Y,X+3,Y-1.5);
+   IF t≥1.2 THEN ay:=ay+.2; ax:=ax-.3; END;
+   IF t=1.5 THEN Rep:=-1 END;
+    X:=X+Dir*vx*t-Dir*ax*t^2;
+    Y:=Y-vy*t+ay*t^2;
+   IF t=1.2 THEN ay:=ay*2; 1▶Bomb; θ:=-30; v0:=20; x0:=X+2*Dir; y0:=Y-2; Inj:=450; r:=2; R:=0; a:=0; END;
+     IF GETPIX(X,Y-.7)=Black OR GETPIX(X+1.4,Y+.2)=Black OR GETPIX(X+3,Y-.7)=Black THEN
+     1▶Bomb▶R; xp:=X+1.3; yp:=Y-.7; Inj:=550; r:=r+3; Rep:=-1; Z:=0;
+      WHILE Z≤20 DO Z:=Z+1;
+      LINE(xp,yp,xp+TRUNCATE(RANDOM(-4,4),1),yp+TRUNCATE(RANDOM(-4,4),1),RGB(255,50,0));
+      END;
+     WAIT(0.05);
+     END;
+   TEXTOUT("战姫",X,Y,3,RGB(150,140,255));
+  END;                    //4
+  IF Skill=5 THEN
+   TEXTOUT("天姫",X-1.3,11,3,RGB(210,100,255));
+    IF GETPIX(X,Y-1.7)≠Black THEN  Y:=Y-0.3;
+     RECT(X-0.2,10.7,X+0.2,Y,RGB(220,200,255),RGB(255,255,255));
+     ELSE  WAIT(0.01);t:=t+0.1;
+        RECT(X-t,10.7,X+t,Y-1.3,RGB(220,200,255),RGB(IP(220+t*23),IP(100+t*100),IP(200+36*t)));
+        IF t=1.5 THEN 1▶Bomb▶R; xp:=X; yp:=Y-.8; Inj:=1000; r:=7; Rep:=-1; a:=0; END; 
+    END;
+    IF Y≤-16 THEN Rep:=-1; Bomb:=0; END;
+  END;    //5
+  IF Skill=17 THEN
+    IF GETPIX(X,Y-1.3)=Black THEN t:=t+0.1; END;
+       IF (ABS(X-x1-.5)≤.82 AND ABS(Y-y1+.5)≤.82 AND Lp1>0) OR (ABS(X-x2-.5)≤.82 AND ABS(Y-y2+.5)≤.82 AND Lp2>0) OR t≥6.5 OR Y≤-17
+       OR (ABS(X-x3-.5)≤.82 AND ABS(Y-y3+.5)≤.82 AND Lp3>0) OR (ABS(X-M9(10,1))≤.7 AND ABS(Y-M9(10,2))≤.7)
+       THEN Rep:=-1; 1▶Bomb▶R; xp:=X; yp:=Y;
+        ELSE Y:=Y-0.1; END;
+    RECT(G1,X-.4,Y+.5,X+.5,Y-.4);
+    RECT(X-.4,Y+.5,X+.5,Y-.4);
+    TEXTOUT("钻",X-.4,Y+.4,1,RGB(170,140,0)); 
+  END;
+  IF Skill=6 THEN
+  WAIT(0.01);  t:=t+0.01;
+   IF ISKEYDOWN(2) OR ISKEYDOWN(7) OR K=7  THEN θ:=θ+4; END;
+   IF ISKEYDOWN(12) OR ISKEYDOWN(8) OR K=8 THEN θ:=θ-4; END;
+   IF θ>360 THEN θ:=0; END; IF θ<0 THEN θ:=360; END;
+     ax:=COS(θ)*v0; ay:=SIN(θ)*v0;
+     X:=X+ax; Y:=Y+ay;
+   IF GETPIX(X-.1,Y+.1)=Black OR GETPIX(X+1.3,Y-1.4)=Black OR GETPIX(X+1.3,Y+.1)=Black OR GETPIX(X-.1,Y-1.4)=Black THEN Bomb:=1; xp:=X; yp:=Y; Inj:=850; r:=5; 1▶Bomb▶R; Rep:=-1; a:=0; END;
+   IF Y≤-17 OR Y≥17 OR X≤-18 OR X≥18 OR t=8 THEN Rep:=-1; 0▶R▶Bomb; END;
+       TEXTOUT("时间: "+t+"  ",-15.6,2,3,RGB(255,50,50),200,RGB(255,255,255));
+          IF TStep=-6 THEN
+           IF 0.4≤t AND t≤0.78 THEN K:=8;
+           TEXTOUT("2.按下:  轮盘右",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.2);
+           END;
+           IF t>0.78 THEN K:=-1;
+           TEXTOUT("3.放开:  轮盘右",-15.6,0,3,RGB(200,100,80),300,RGB(255,255,255)); WAIT(0.06);
+           END;
+          END;
+        IF t≥5 THEN TEXTOUT(TRUNCATE(8-t,1),X-.1,Y+1,2,RGB(50,80,255),100,RGB(255,255,255)); END;
+       TEXTOUT("羊",X,Y,3,RGB(255,50,50),200,RGB(255,255,255));
+   END;  //6
+   UNTIL Rep=-1 END;
+ END;     //4 5 6
+M9(5,16):=Inj; M9(5,21):=r;
+END;  //Skill X
+
+IF (Skill=0 OR Skill=8 OR Skill=13) AND times=0 AND r=0 AND v0≤25 THEN Inj:=125; M9(5,16):=Inj; M9(5,21):=r; END;
+IF (Play=1 AND Move1≠0) OR (Play=2 AND Move2≠0) OR (Play=3 AND Move3≠0) THEN IF r≠-.3 THEN Inj:=Inj*.8; END; END;
+
+IF M9(5,13)≠-2 OR Cost=-1 THEN
+BLIT(G1);
+TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200));
+TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100));
+TEXTOUT(IP(Lp1/48)+"%",-6.3,6.8,2,RGB(150,230,180));
+TEXTOUT(IP(Lp2/48)+"%",-6.3,5.8,2,RGB(50,150,255));
+IF Players=3 THEN TEXTOUT(IP(Lp3/48)+"%",-6.3,4.8,2,RGB(200,160,180)); END;
+END;
+IF v0=42 THEN TEXTOUT("轰炸中...正在: "+times,-15.6,8,3,RGB(255,50,120),400,RGB(255,255,255)); END;
+
+0▶t;
+IF times≥1 AND Skill≠0 AND v0≠42 THEN Inj:=M9(5,16); r:=M9(5,21); END;
+
+IF Bomb=1 THEN
+     IF V≠3.33 AND Skill≠14 THEN
+     vx:=v0*COS(θ); vy:=v0*SIN(θ);
+     END;
+WHILE R=0 DO
+IF Skill≠16 AND Skill≠21 AND T≠99 THEN
+ t:=t+0.01;
+ yp:=y0+.2+vy*t-5*t^2;
+ xp:=x0+.5+Dir*vx*t+a*t^2;
+ IF Skill=18 AND t=1 THEN T:=99;
+   IF xp≥X THEN Dir:=-1 ELSE Dir:=1; END;
+   x0:=xp; y0:=yp;
+   θ:=IP(ATAN(Dir*(Y-y0)/(X-x0))); 
+   vx:=30*COS(θ); vy:=30*SIN(θ); t:=0;
+ END;
+ELSE
+   t:=t+0.01;
+   xp:=x0+Dir*vx*t; yp:=y0+vy*t;
+   IF FP(t/.1)=0 AND Skill=21 THEN
+    LINE(M9(7,20),M9(7,21),xp,yp,RGB(50,200,255));
+     IF t≥.2 THEN LINE(x0+Dir*vx*(t-.2),y0+vy*(t-.2),x0+Dir*vx*(t-.1),y0+vy*(t-.1),RGB(255,255,255)); END;
+    M9(7,20):=xp; M9(7,21):=yp;
+   END; 
+   IF xp≤-20 OR xp≥20 OR yp≥16 OR yp≤-19 THEN R:=1; END;
+END;
+IF Skill≠21 THEN
+ IF GETPIX(xp-.6,yp+.6)=Black OR GETPIX(xp+.6,yp+.6)=Black OR yp<-16 OR GETPIX(xp-.6,yp-.6)=Black OR GETPIX(xp+.6,yp-.6)=Black THEN    //找到一个翻代码的!...记得点赞,点赞或者投币
+ 1▶R;
+ END;
+ELSE
+ IF GETPIX(xp,yp)=Black THEN R:=1; END;
+END;
+   IF t≥0.2 THEN
+ IF (ABS(xp-x1-.5)≤.82 AND ABS(yp-y1+.5)≤.82 AND Lp1>0) OR (ABS(xp-x2-.5)≤.82 AND ABS(yp-y2+.5)≤.82 AND Lp2>0)
+ OR (ABS(xp-x3-.5)≤.82 AND ABS(yp-y3+.5)≤.82 AND Lp3>0) OR (ABS(xp-x9)≤.75 AND ABS(yp-y9)≤.75) OR (ABS(xp-M9(10,1))≤.7 AND ABS(yp-M9(10,2))≤.7)
+  THEN R:=1; END; END;
+IF Lp1>0 AND GETPIX(x1+.3,y1-1.4)≠Black AND GETPIX(x1+1,y1-1.4)≠Black THEN 
+  RECT(x1,y1,x1+1.3,y1-1.2);
+  y1-0.1▶y1; IF Lp1>0 AND y1≤-16 THEN TEXTOUT("我 已重新复活!",-4.5,5,3,RGB(150,230,180),200,RGB(255,255,255)); Lp1:=TRUNCATE(Lp1/2,1); 13▶y1; TRUNCATE(RANDOM(-15,15),2)▶x1; END;
+  TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+END;
+IF Lp2>0 AND GETPIX(x2+.3,y2-1.4)≠Black AND GETPIX(x2+1,y2-1.4)≠Black THEN
+  RECT(x2,y2,x2+1.3,y2-1.2);
+  y2-0.1▶y2; IF Lp2>0 AND y2≤-16 THEN TEXTOUT("你 已重新复活!",-4.5,5,3,RGB(50,150,255),200,RGB(255,255,255)); Lp2:=TRUNCATE(Lp2/2,1); 13▶y2; TRUNCATE(RANDOM(-15,15),2)▶x2; END;
+  TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+END;
+IF Lp3>0 AND Players=3 AND GETPIX(x3+.3,y3-1.4)≠Black AND GETPIX(x3+1,y3-1.4)≠Black THEN
+  RECT(x3,y3,x3+1.3,y3-1.2);
+  y3-0.1▶y3; IF Lp3>0 AND y3≤-16 THEN TEXTOUT("他 已重新复活!",-4.5,5,3,RGB(200,160,180),200,RGB(255,255,255)); Lp3:=TRUNCATE(Lp3/2,1); 13▶y3; TRUNCATE(RANDOM(-15,15),2)▶x3; END;
+  TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+END;
+IF M9(10,3)>0 THEN
+ IF GETPIX(M9(10,1)-.4,M9(10,2)-.7)≠Black AND GETPIX(M9(10,1)+.4,M9(10,2)-.7)≠Black THEN
+   M9(10,2):=M9(10,2)-0.1;
+   IF M9(10,2)≤-16 THEN M9(10,3):=0; -99▶M9(10,1); -99▶M9(10,2); END;
+   TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100),100,RGB(255,255,255));
+ END;
+END;
+//TEXTOUT([t],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT(0.06);
+ IF Skill≠21 THEN  
+ TEXTOUT("炮",xp-.5,yp+.5,1,RGB(50,50,50),100,RGB(255,255,255)); 
+ END;
+//WAIT;
+END;  //WHILI LOOP
+   //TEXTOUT([vx,vy],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT;
+//  IF Skill=0 OR Skill=7 THEN
+//  Xmax:=xp+15.9; Xmin:=xp-15.9; Ymax:=yp+10.9; Ymin:=yp-10.9;
+//  RECT;  BLIT(G0,-15.9,10.9,G1);
+//   TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+//   TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+//   TEXTOUT("他",x3,y3,3,RGB(200,160,180)); 
+//   TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200));
+//  END;
+//这里曾写有手榴弹的程序,后来我被计算器暴击破甲了
+
+IF Skill=21 THEN Inj:=I; LINE(x0,y0,xp,yp,RGB(50,55,255)); END;
+
+V:=0;
+IF Skill=19 AND times=0 THEN M9(5,14):=xp; M9(5,15):=yp; END;
+IF Skill=4 AND t>.8 THEN Inj:=500; END;
+//TEXTOUT([x1,y1],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT;
+IF Skill≠21 THEN ARC(xp,yp,15+r,{RGB(50,80,255),RGB(255,255,255)});
+ELSE ARC(xp,yp,15+r,{RGB(255,255,255),RGB(255,255,255)}); END;
+//TEXTOUT("炮",xp-.4,yp+.4,1,RGB(50,50,50),100,RGB(255,255,255));
+d1:=√((x1+.5-xp)^2+(y1-.6-yp)^2); M9(5,17):=d1;
+d2:=√((x2+.5-xp)^2+(y2-.6-yp)^2); M9(5,18):=d2;
+d3:=√((x3+.5-xp)^2+(y3-.6-yp)^2); M9(5,19):=d3;
+d9:=√((x9+.5-xp)^2+(y9-.6-yp)^2);
+M9(10,5):=√((M9(10,1)-xp)^2+(M9(10,2)-yp)^2);
+
+IF Play=1 AND Skill=9 THEN d1:=20; M9(5,17):=20; END;
+IF Play=2 AND Skill=9 THEN d2:=20; M9(5,18):=20; END;
+IF Play=3 AND Skill=9 THEN d3:=20; M9(5,19):=20; END;
+
+IF Ref1+Ref2+Ref3>0 AND r≠-.3 AND (Skill≤3 OR (Skill=4 AND Inj≠550) OR Skill=7 OR Skill=8 OR Skill=13 OR Skill=19) AND v0≠42 THEN
+ IF d1≤2.2+r/10 AND Ref1=1 THEN V:=3.33; Ref1:=0; END;
+ IF d2≤2.2+r/10 AND Ref2=1 THEN V:=3.33; Ref2:=0; END;
+ IF d3≤2.2+r/10 AND Ref3=1 THEN V:=3.33; Ref3:=0; END;
+// IF yp≥-16 THEN V:=3.33; END;
+ IF V=3.33 THEN W:=3.33;
+vx:=-vx; vy:=ABS(vy);
+vx:=TRUNCATE(RANDOM(-8,8),2)+vx;
+vy:=TRUNCATE(RANDOM(3,8),2)+vy; 
+IF times≥1 THEN W:=0; END;
+  Skill:=0; R:=0; K:=30; x0:=xp; y0:=yp; CONTINUE 1; END;
+END;
+
+IF Skill=7 THEN Inj:=TRUNCATE(distance({xp-x0},{yp-y0})*9,2); END;
+//TEXTOUT([V],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT;
+
+IF Skill=12 THEN
+ IF Play=1 AND (d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10 OR M9(10,5)≤2+r/10) THEN S:=0;
+  IF d1≤2.2+r/10 THEN Shield1:=Shield1+50; S:=S+50; END;
+  IF d2≤2.2+r/10 THEN Shield1:=Shield1+50; S:=S+50; END;
+  IF d3≤2.2+r/10 THEN Shield1:=Shield1+50; S:=S+50; END;
+  IF M9(10,5)≤2+r/10 THEN Shield1:=Shield1+50; S:=S+50; END;
+ TEXTOUT("+"+S,x1-.5,y1+2,2,RGB(100,100,255));
+ END;
+ IF Play=2 AND (d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10 OR M9(10,5)≤2+r/10) THEN S:=0;
+  IF d1≤2.2+r/10 THEN Shield2:=Shield2+50; S:=S+50; END;
+  IF d2≤2.2+r/10 THEN Shield2:=Shield2+50; S:=S+50; END;
+  IF d3≤2.2+r/10 THEN Shield2:=Shield2+50; S:=S+50; END;
+  IF M9(10,5)≤2+r/10 THEN Shield2:=Shield2+50; S:=S+50; END;
+ TEXTOUT("+"+S,x2-.5,y2+2,2,RGB(100,100,255));
+ END;
+ IF Play=3 AND (d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10 OR M9(10,5)≤2+r/10) THEN S:=0;
+  IF d1≤2.2+r/10 THEN Shield3:=Shield3+50; S:=S+50; END;
+  IF d2≤2.2+r/10 THEN Shield3:=Shield3+50; S:=S+50; END;
+  IF d3≤2.2+r/10 THEN Shield3:=Shield3+50; S:=S+50; END;
+  IF M9(10,5)≤2+r/10 THEN Shield3:=Shield3+50; S:=S+50; END;
+ TEXTOUT("+"+S,x3-.5,y3+2,2,RGB(100,100,255));
+ END;
+S:=0;
+END;   //  Skill12
+//TEXTOUT("作者:黎明lb",-16,-16);
+IF Skill=19 AND times=0 THEN xp▶x0▶M9(5,14); yp▶y0▶M9(5,15); END;
+
+0▶M9(13,1);0▶M9(13,2);0▶M9(13,5);0▶M9(13,6);0▶M9(13,9);0▶M9(13,10);
+0▶M9(13,3);0▶M9(13,4);0▶M9(13,7);0▶M9(13,8);0▶M9(13,11);0▶M9(13,12);
+IF d1≤2.2+r/10 AND Lp1>0 THEN 
+ IF d1≥1.8 THEN Inj:=TRUNCATE(Inj*d1/2.75,2); IF d1≥2.2 THEN Inj:=Inj*.8; END; END;
+   .2*(x1-xp)▶M9(13,1);
+   √(ABS(.8*d1^2-M9(13,1)^2))▶M9(13,2); 0▶M9(13,3); 0▶M9(13,4);
+    IF Skill=16 THEN Move1:=2; END;
+ IF d1≤0.8+r/10 AND (Skill≤3 OR Skill=8 OR Skill=13) THEN Inj:=Inj*1.5; 
+ TEXTOUT("暴击!",x1,y1+2,1,RGB(255,0,0));
+ END;
+IF Shield1=0 OR (4≤Skill AND Skill≤6) OR Skill=9 OR Skill=12 OR Skill=14 THEN Lp1:=Lp1-Inj;
+ELSE
+    IF Skill=3 THEN Inj:=Inj*1.3; TEXTOUT("破甲!",x1,y1+3,1,RGB(0,0,255)); END;
+    IF Skill=21 AND Inj<150 THEN Inj:=Inj*0.8; TEXTOUT("未穿甲",x1-.5,y1+2,1,RGB(200,80,160)); END; 
+ IF Shield1≥Inj THEN
+  Shield1:=Shield1-Inj;
+  ELSE
+  Lp1:=Lp1+Shield1-Inj; Shield1:=0;
+ END;
+END;
+M9(4,5):=M9(4,5)+Inj;
+IF v0≠42 THEN M9(4,Play+1):=M9(4,Play+1)+Inj; END;
+M9(4,1):=M9(4,1)+Inj;
+TEXTOUT(Inj,x1,y1+1,2,RGB(150,50,0)); 
+  IF r≠-.3 THEN Inj:=M9(5,16); ELSE Inj:=150; END;
+//WAIT(0.02);
+END;  //d1
+IF d2≤2.2+r/10 AND Lp2>0 THEN
+ IF d2≥1.8 THEN Inj:=TRUNCATE(Inj*d2/2.75,2); IF d2≥2.2 THEN Inj:=Inj*.8; END; END; 
+   .2*(x2-xp)▶M9(13,5);
+   √(ABS(.8*d2^2-M9(13,5)^2))▶M9(13,6); 0▶M9(13,7); 0▶M9(13,8);
+    IF Skill=16 THEN Move2:=2; END;
+ IF d2≤0.8+r/10 AND (Skill≤3 OR Skill=8 OR Skill=13) THEN Inj:=Inj*1.5;
+ TEXTOUT("暴击!",x2,y2+2,1,RGB(255,0,0)); 
+ END; 
+IF Shield2=0 OR (4≤Skill AND Skill≤6) OR Skill=9 OR Skill=12 OR Skill=14 THEN Lp2:=Lp2-Inj;
+ELSE
+    IF Skill=3 THEN Inj:=Inj*1.3; TEXTOUT("破甲!",x2,y2+3,1,RGB(0,0,255)); END;
+    IF Skill=21 AND Inj<150 THEN Inj:=Inj*0.8; TEXTOUT("未穿甲",x2-.5,y2+2,1,RGB(200,80,160)); END; 
+ IF Shield2≥Inj THEN
+  Shield2:=Shield2-Inj;
+  ELSE
+  Lp2:=Lp2+Shield2-Inj; Shield2:=0;
+  END;
+END;
+M9(4,6):=M9(4,6)+Inj;
+IF v0≠42 THEN M9(4,Play+1):=M9(4,Play+1)+Inj; END;
+M9(4,1):=M9(4,1)+Inj;
+TEXTOUT(Inj,x2,y2+1,2,RGB(150,50,0));
+  IF r≠-.3 THEN Inj:=M9(5,16); ELSE Inj:=150; END;
+END;
+IF d3≤2.2+r/10 AND Lp3>0 THEN
+ IF d3≥1.8 THEN Inj:=TRUNCATE(Inj*d3/2.75,2); IF d3≥2.2 THEN Inj:=Inj*.8; END; END; 
+   .2*(x3-xp)▶M9(13,9);
+   √(ABS(.8*d3^2-M9(13,9)^2))▶M9(13,10); 0▶M9(13,11);0▶M9(13,12);
+    IF Skill=16 THEN Move3:=2; END;
+ IF d3≤0.8+r/10 AND (Skill≤3 OR Skill=8 OR Skill=13) THEN Inj:=Inj*1.5;
+ TEXTOUT("暴击!",x3,y3+2,1,RGB(255,0,0)); 
+ END;
+IF Shield3=0 OR (4≤Skill AND Skill≤6) OR Skill=9 OR Skill=12 OR Skill=14 THEN Lp3:=Lp3-Inj;
+ELSE
+    IF Skill=3 THEN Inj:=Inj*1.3; TEXTOUT("破甲!",x3,y3+3,1,RGB(0,0,255)); END;
+    IF Skill=21 AND Inj<150 THEN Inj:=Inj*0.8; TEXTOUT("未穿甲",x3-.5,y3+2,1,RGB(200,80,160)); END; 
+ IF Shield3≥Inj THEN
+  Shield3:=Shield3-Inj;
+  ELSE
+  Lp3:=Lp3+Shield3-Inj; Shield3:=0;
+  END;
+END;
+M9(4,7):=M9(4,7)+Inj;
+IF v0≠42 THEN M9(4,Play+1):=M9(4,Play+1)+Inj; END;
+M9(4,1):=M9(4,1)+Inj;
+TEXTOUT(Inj,x3,y3+1,2,RGB(150,50,0));
+  IF r≠-.3 THEN Inj:=M9(5,16); ELSE Inj:=150; END;
+//WAIT(0.02);
+END;
+
+IF d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10 THEN Z:=0;
+IF 2.2≤M9(5,17) AND d1≤2.2+r/10 THEN M9(5,17):=2.2; END; IF 2.2≤M9(5,18) AND d2≤2.2+r/10 THEN M9(5,18):=2.2; END; IF 2.2≤M9(5,19) AND d3≤2.2+r/10 THEN M9(5,19):=2.2; END;
+ WHILE Z≤IP(Inj/25) DO Z:=Z+1;
+  IF M9(5,17)≤2.2+r/10 THEN LINE(x1+.6,y1-.6,2*x1+1.8-xp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),2*y1-1.8-yp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),RGB(255-IP(M9(5,17)*110),50,IP(M9(5,17)*110))); END;
+  IF M9(5,18)≤2.2+r/10 THEN LINE(x2+.6,y2-.6,2*x2+1.8-xp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),2*y2-1.8-yp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),RGB(255-IP(M9(5,18)*110),50,IP(M9(5,18)*110))); END;
+  IF M9(5,19)≤2.2+r/10 THEN LINE(x3+.6,y3-.6,2*x3+1.8-xp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),2*y3-1.8-yp+TRUNCATE(RANDOM(-Inj/125,Inj/125),1),RGB(255-IP(M9(5,19)*110),50,IP(M9(5,19)*110))); END;
+ END;
+END;
+
+IF d9≤2.2+r/10 THEN
+  IF SinP=4 THEN WAIT(0.15); Inj:=250; M9(5,16):=Inj; r:=6.1; 1▶R▶Bomb; 0▶a▶SinP▶Skill; xp:=x9; yp:=y9; K:=30; CONTINUE 1; END;
+SinP:=0; TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(255,255,255)); -99▶x9▶y9;
+END;
+IF M9(10,5)≤2+r/10 AND r≠-6 AND M9(10,3)>0 THEN
+  M9(10,3)-Inj▶M9(10,3); M9(4,1):=M9(4,1)+Inj;
+  IF Skill=16 THEN M9(10,6):=2; END;
+  IF v0≠42 THEN M9(4,Play+1):=M9(4,Play+1)+Inj; END;
+  IF M9(10,3)≤0 THEN M9(10,3):=0;
+  TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,255,255)); WAIT(0.15);
+  Inj:=220; M9(5,16):=Inj; r:=6.1; 1▶R▶Bomb; 0▶Skill; xp:=M9(10,1); yp:=M9(10,2); K:=30; -99▶M9(10,1);-99▶M9(10,2); 
+  CONTINUE 1; END;
+TEXTOUT(Inj,M9(10,1),M9(10,2)+1,2,RGB(150,50,0));
+  IF r≠-.3 THEN Inj:=M9(5,16); ELSE Inj:=150; END;
+END;
+
+IF 0≤Skill AND r≠-.3 AND v0≠42 AND (Skill≤3 OR Skill=8 OR Skill=9 OR Skill=13 OR Skill=16 OR Skill=18) AND (d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10 OR M9(10,5)≤2+r/10) THEN
+ M9(4,Play+13):=M9(4,Play+13)+1;
+END;
+//Xmax:=15.9; Xmin:=-15.9; Ymax:=10.9; Ymin:=-10.9;
+ARC(G1,xp,yp,15+r,{RGB(255,255,255),RGB(255,255,255)});
+//WAIT(0.1);
+//BLIT(G1);
+
+IF Skill=5 THEN Z:=0;
+ WHILE Z≤6 DO Z:=Z+1;
+ RECT;
+ BLIT(-15.9+(-1)^Z/8,10.9,15.9+(-1)^Z/8,-13,G1);
+ WAIT(0.05);
+ END;
+END;
+
+  IF M9(4,1)>0 THEN TEXTOUT("累伤: "+M9(4,1),-12.7,10.9,2,RGB(220,60,80),200,RGB(255,255,255)); END;
+
+IF (d1≤2.2+r/10 OR d2≤2.2+r/10 OR d3≤2.2+r/10) AND Skill≠11 THEN
+  REPEAT
+// IF (GETPIX(x1+0.3,y1-1.6)≠Black AND GETPIX(x1+1,y1-1.6)≠Black) AND y1≥-16 THEN
+  IF ABS(M9(13,2))≥0.001 AND y1>-16 THEN
+ M9(13,3)+0.01▶M9(13,3); M9(13,4)+0.01▶M9(13,4);
+ TEXTOUT("我",x1,y1,3,RGB(255,255,255)); 
+ x1:=x1+M9(13,1)*M9(13,3); y1:=y1+M9(13,2)*M9(13,4)-5*M9(13,4)^2;
+   IF GETPIX(x1+1.4,y1-.7)=Black THEN -ABS(.3*M9(13,1))▶M9(13,1); M9(13,3):=0; END;
+   IF GETPIX(x1-.1,y1-.7)=Black THEN ABS(.3*M9(13,1))▶M9(13,1);  M9(13,3):=0; END;
+   IF GETPIX(x1+.7,y1+.1)=Black THEN -ABS(M9(13,2))▶M9(13,2); M9(13,4):=0; END;
+   IF GETPIX(x1+.7,y1-1.5)=Black THEN ABS(M9(13,2)*.5)▶M9(13,2); M9(13,4):=0; END;
+ TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+ END;
+// IF (GETPIX(x2+0.3,y2-1.6)≠Black AND GETPIX(x2+1,y2-1.6)≠Black) AND y2≥-16 THEN
+  IF ABS(M9(13,6))≥0.001 AND y2>-16 THEN
+ M9(13,7)+0.01▶M9(13,7); M9(13,8)+0.01▶M9(13,8);
+ TEXTOUT("你",x2,y2,3,RGB(255,255,255));
+ x2:=x2+M9(13,5)*M9(13,7); y2:=y2+M9(13,6)*M9(13,8)-5*M9(13,8)^2;
+   IF GETPIX(x2+1.4,y2-.7)=Black THEN -ABS(.3*M9(13,5))▶M9(13,5); END;
+   IF GETPIX(x2-.1,y2-.7)=Black THEN ABS(.3*M9(13,5))▶M9(13,5); END;
+   IF GETPIX(x2+.7,y2+.1)=Black THEN -ABS(M9(13,6))▶M9(13,6); END;
+   IF GETPIX(x2+.7,y2-1.5)=Black THEN ABS(M9(13,6)*.5)▶M9(13,6); M9(13,8):=0; END;
+ TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+ END;
+// IF (GETPIX(x3+0.3,y3-1.6)≠Black AND GETPIX(x3+1,y3-1.6)≠Black) AND y3≥-16 THEN
+  IF ABS(M9(13,10))≥0.001 AND y3>-16 THEN
+  M9(13,11)+0.01▶M9(13,11); M9(13,12)+0.01▶M9(13,12);
+ TEXTOUT("他",x3,y3,3,RGB(255,255,255)); 
+ x3:=x3+M9(13,9)*M9(13,11); y3:=y3+M9(13,10)*M9(13,12)-5*M9(13,12)^2;
+   IF GETPIX(x3+1.4,y3-.7)=Black THEN -ABS(.3*M9(13,9))▶M9(13,9); END;
+   IF GETPIX(x3-.1,y3-.7)=Black THEN ABS(.3*M9(13,9))▶M9(13,9); END;
+   IF GETPIX(x3+.7,y3+.1)=Black THEN -ABS(M9(13,10))▶M9(13,10); M9(13,12):=0; END;
+   IF GETPIX(x3+.7,y3-1.5)=Black THEN ABS(M9(13,10)*.5)▶M9(13,10); M9(13,12):=0; END;
+ TEXTOUT("他",x3,y3,3,RGB(200,160,180)); 
+ END;
+WAIT(0.01);
+//TEXTOUT([M9(13,1),M9(13,2)],-15.9,8,3,RGB(255,0,0),300,RGB(255,255,255));
+  UNTIL
+  (ABS(M9(13,2))≤0.001 OR y1≤-16) AND (ABS(M9(13,6))≤0.001 OR y2≤-16) AND (ABS(M9(13,10))≤0.001 OR y3≤-16)
+ END;
+END;
+END;
+//   (GETPIX(x1+0.3,y1-1.6)=Black OR GETPIX(x1+1,y1-1.6)=Black OR y1≤-16) AND
+//   (GETPIX(x2+0.3,y2-1.6)=Black OR GETPIX(x2+1,y2-1.6)=Black OR y2≤-16) AND
+//   (GETPIX(x3+0.3,y3-1.6)=Black OR GETPIX(x3+1,y3-1.6)=Black OR y3≤-16)
+
+IF (Lp1≤0 OR (y1≤-16 AND -16≤x1 AND x1≤16)) AND y1>-99 THEN
+ BLIT(G1);
+  REPEAT
+    y1+0.1▶y1;
+    TEXTOUT("环",x1,y1+1.5,3,RGB(240,250,50),50,RGB(255,255,255));
+    TEXTOUT("翅     翅",x1-1,y1-.5,1,RGB(180,190,255),100,RGB(255,255,255));
+    TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+    WAIT(0.005);
+  UNTIL y1≥13 END;
+  IF Lp1>0 THEN y1:=-16; ELSE Lp1:=0; -99▶x1▶y1; END;
+WAIT(0.1);
+END;
+IF (Lp2≤0 OR (y2≤-16 AND -16≤x2 AND x2≤16)) AND y2>-99 THEN
+BLIT(G1);
+  REPEAT
+    y2+0.1▶y2;
+    TEXTOUT("环",x2,y2+1.5,3,RGB(240,250,50),50,RGB(255,255,255));
+    TEXTOUT("翅     翅",x2-1,y2-.5,1,RGB(180,190,255),100,RGB(255,255,255));
+    TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+    WAIT(0.005);
+  UNTIL y2≥13 END;
+  IF Lp2>0 THEN y2:=-16; ELSE Lp2:=0; -99▶x2▶y2; END;
+WAIT(0.1);
+END;
+IF (Lp3≤0 OR (y3≤-16 AND -16≤x3 AND x3≤16)) AND y3>-99 THEN
+BLIT(G1);
+  REPEAT
+    y3+0.1▶y3;
+    TEXTOUT("环",x3,y3+1.5,3,RGB(240,250,50),50,RGB(255,255,255));
+    TEXTOUT("翅     翅",x3-1,y3-.5,1,RGB(180,190,255),100,RGB(255,255,255));
+    TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+    WAIT(0.005);
+  UNTIL y3≥13 END;
+  IF Lp3>0 THEN y3:=-16; ELSE Lp3:=0; -99▶x3▶y3; END;
+WAIT(0.1);
+END;
+  IF Lp1>0 AND y1≤-16 THEN TEXTOUT("我 已重新复活!",-4.5,1,3,RGB(150,230,180),200,RGB(255,255,255)); Lp1:=TRUNCATE(Lp1/2,1); 13▶y1; TRUNCATE(RANDOM(-15,15),2)▶x1; WAIT(0.5); END;
+  IF Lp2>0 AND y2≤-16 THEN TEXTOUT("你 已重新复活!",-4.5,1,3,RGB(50,150,255),200,RGB(255,255,255)); Lp2:=TRUNCATE(Lp2/2,1); 13▶y2; TRUNCATE(RANDOM(-15,15),2)▶x2; WAIT(0.5); END;
+  IF Lp3>0 AND y3≤-16 THEN TEXTOUT("他 已重新复活!",-4.5,1,3,RGB(200,160,180),200,RGB(255,255,255)); Lp3:=TRUNCATE(Lp3/2,1); 13▶y3; TRUNCATE(RANDOM(-15,15),2)▶x3; WAIT(0.5); END;
+IF (Lp1≤0 AND Lp2≤0) OR (Lp1≤0 AND Lp3≤0) OR (Lp2≤0 AND Lp3≤0) THEN Play:=-2; K:=0; CONTINUE 1; END;
+
+IF M9(4,1)>0 THEN TEXTOUT("累伤: "+M9(4,1),-12.7,10.9,2,RGB(220,60,80),200,RGB(255,255,255)); END;
+
+IF Round≥Players-1 THEN
+Z:=0;
+REPEAT Z:=Z+1;
+ IF M9(11,3*Z-1)=1 AND
+   ((ABS(M9(11,3*Z)-.2-x1)≤.82 AND ABS(M9(11,3*Z+1)+.2-y1)≤.82 AND Lp1>0) OR 
+   (ABS(M9(11,3*Z)-.2-x2)≤.82 AND ABS(M9(11,3*Z+1)+.2-y2)≤.82 AND Lp2>0) OR
+   (ABS(M9(11,3*Z)-.2-x3)≤.82 AND ABS(M9(11,3*Z+1)+.2-y3)≤.82 AND Lp3>0)) THEN
+ TEXTOUT("雷",M9(11,3*Z),M9(11,3*Z+1),1,RGB(50,30,60));
+ WAIT(0.2);
+ Inj:=150; r:=-.3; xp:=M9(11,3*Z); yp:=M9(11,3*Z+1)-.8; 1▶Bomb▶R; K:=30;
+   IF Skill≠0 THEN Skill▶M9(5,13); Skill:=0; END;
+ 0▶M9(11,3*Z-1); -99▶M9(11,3*Z); -99▶M9(11,3*Z+1);
+ Z:=M9(11,1)+1;
+ END;
+UNTIL Z≥M9(11,1) END;
+IF Z=M9(11,1)+1 THEN CONTINUE 1; END;
+Z:=0;
+END;
+
+IF Round≠70 AND Round≠100 AND Round≠120 AND M9(5,13)≥0 AND Skill≠7 AND Skill≠12 AND Skill≠14 AND Skill≠19 THEN WAIT(0.2); ELSE WAIT(0.05); END;
+IF M9(5,13)>0 AND v0≠42 THEN Skill:=M9(5,13); END;
+
+IF Skill=7 THEN Inj:=150;
+IF times≤8 THEN
+ IF Play=1 THEN M9(5,14):=x1; M9(5,15):=y1; END;
+ IF Play=2 THEN M9(5,14):=x2; M9(5,15):=y2; END;
+ IF Play=3 THEN M9(5,14):=x3; M9(5,15):=y3; END;
+θ:=θ-1; times:=times+1; 0▶R; 1▶Bomb; K:=30; M9(5,14)▶x0▶xp; M9(5,15)▶y0▶yp; r:=0;
+TRUNCATE(RANDOM(-1,1),2)+v0▶v0;
+TRUNCATE(RANDOM(-3,3),2)+θ▶θ;
+CONTINUE 1;
+ELSE times:=0; END;
+END;
+
+IF Skill=19 THEN
+IF times≤5 THEN
+ IF W=3.33 THEN M9(5,14):=xp; M9(5,15):=yp; W:=0; END;
+ IF M9(5,15)≤-16 THEN times:=99; END;
+times:=times+1; 0▶R; 1▶Bomb; K:=30; Inj:=200; M9(5,16):=Inj; r:=1; M9(5,14)▶x0; M9(5,15)▶y0; 
+TRUNCATE(RANDOM(40,55),1)▶θ; TRUNCATE(RANDOM(0,6),2)▶v0; 
+ IF RANDOM(0,1)≥.5 THEN Dir:=1; ELSE Dir:=-1; END;
+CONTINUE 1;
+ELSE times:=0; END;
+END;
+
+IF Skill=12 THEN
+IF times≤18 THEN
+times:=times+1; R:=0; 1▶Bomb; K:=30; θ:=-90; v0:=50; Inj:=85; M9(5,16):=Inj; r:=-8; 12▶y0;
+TRUNCATE(RANDOM(-4.5,4),1)+X▶x0; 
+CONTINUE 1;
+ELSE times:=0; END;
+END;
+
+IF Skill=21 THEN
+IF times≤7 THEN
+ IF Play=1 THEN x0:=x1+.6; y0:=y1-.6; END;
+ IF Play=2 THEN x0:=x2+.6; y0:=y2-.6; END;
+ IF Play=3 THEN x0:=x3+.6; y0:=y3-.6; END;
+ M9(7,20):=x0; M9(7,21):=y0; M9(5,14):=x0; M9(5,15):=y0;
+times:=times+1; R:=0; 1▶Bomb; K:=30; Inj:=I; r:=-6.5;
+CONTINUE 1;
+ELSE times:=0; END;
+END;
+
+//TEXTOUT([TStep],-15.6,5,3,RGB(255,50,50),200,RGB(255,255,255)); WAIT;
+IF Skill=14 AND T<3 THEN
+BLIT(G1);
+TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+ R:=0; K:=30; CONTINUE 1; END; 
+
+IF (Round=70 OR Round=100 OR Round=120) AND times≤29 AND (M9(5,13)≠-2 OR Cost=-1) THEN
+TRUNCATE(RANDOM(-16,16),1)▶x0; y0:=12; r:=0;Inj:=135; Skill:=0; T:=0; V:=0;
+IF Round=100 THEN r:=2; Inj:=145; END;
+IF Round=120 THEN r:=5; Inj:=160; END;
+θ:=-90; times:=times+1; y0:=12; R:=0; Bomb:=1; K:=30; v0:=42; a:=0; Skill:=0;
+CONTINUE 1;
+END;
+IF M9(5,13)≠0 AND M9(5,13)≠-2 THEN M9(5,13)▶Skill; END;
+IF M9(10,3)>0 AND Skill=15 THEN
+ WHILE GETPIX(M9(10,1)-.4,M9(10,2)-.7)≠Black AND GETPIX(M9(10,1)+.4,M9(10,2)-.7)≠Black DO
+   M9(10,2):=M9(10,2)-0.1;
+   IF M9(10,2)≤-16 THEN M9(10,3):=0; -99▶M9(10,1); -99▶M9(10,2); END;
+   TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100),100,RGB(255,255,255));
+ END;
+END;
+
+IF M9(4,5)≠0 OR M9(4,6)≠0 OR M9(4,7)≠0 THEN
+BLIT(G1);
+TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+ IF M9(4,5)≠0 AND Lp1>0 THEN  M9(4,8):=y1+.5; ELSE  M9(4,8):=99; END;
+ IF M9(4,6)≠0 AND Lp2>0 THEN  M9(4,9):=y2+.5; ELSE  M9(4,9):=99; END;
+ IF M9(4,7)≠0 AND Lp3>0 THEN M9(4,10):=y3+.5; ELSE M9(4,10):=99; END;
+ REPEAT
+ IF M9(4,8)≤14 THEN M9(4,8):=M9(4,8)+0.1; TEXTOUT(M9(4,5),x1-.5,M9(4,8),2,RGB(250,85,65),200,RGB(255,255,255)); END;
+ IF M9(4,9)≤14 THEN M9(4,9):=M9(4,9)+0.1; TEXTOUT(M9(4,6),x2-.5,M9(4,9),2,RGB(250,85,65),200,RGB(255,255,255)); END;
+ IF M9(4,10)≤14 THEN M9(4,10):=M9(4,10)+0.1; TEXTOUT(M9(4,7),x3-.5,M9(4,10),2,RGB(250,85,65),200,RGB(255,255,255)); END;
+ WAIT(0.004);
+ UNTIL M9(4,8)≥14 AND M9(4,9)≥14 AND M9(4,10)≥14 END;
+END;
+
+BLIT(G1);
+IF M9(5,13)≠-2 THEN
+TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+TEXTOUT("他",x3,y3,3,RGB(200,160,180));
+TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200));
+TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100));
+TEXTOUT(IP(Lp1/48)+"%",-6.3,6.8,2,RGB(150,230,180));
+TEXTOUT(IP(Lp2/48)+"%",-6.3,5.8,2,RGB(50,150,255));
+IF Players=3 THEN TEXTOUT(IP(Lp3/48)+"%",-6.3,4.8,2,RGB(200,160,180)); END;
+ IF TStep≠10 THEN Round:=Round+1; END;
+M9(10,4):=0;
+ELSE S:=-2; M9(5,13):=0; END;
+IF Skill=8 THEN
+ IF Play=1 THEN Shield1:=Shield1+220; TEXTOUT("+220",x1,y1+1,1,RGB(50,80,250)); END;
+ IF Play=2 THEN Shield2:=Shield2+220; TEXTOUT("+220",x2,y2+1,1,RGB(50,80,250)); END;
+ IF Play=3 THEN Shield3:=Shield3+220; TEXTOUT("+220",x3,y3+1,1,RGB(50,80,250)); END;
+END;
+IF Cost=-1 AND Skill≤0 THEN Round:=Round+1; S:=-1;
+  IF Play=1 THEN M9(7,9):=M9(7,9)-1; Lp1:=Lp1+300; TEXTOUT("+300",x1,y1+1,2,RGB(40,180,55)); IF Lp1>4800 THEN Lp1:=4800; END; END;
+  IF Play=2 THEN M9(8,9):=M9(8,9)-1; Lp2:=Lp2+300; TEXTOUT("+300",x2,y2+1,2,RGB(40,180,55)); IF Lp2>4800 THEN Lp2:=4800; END; END;
+  IF Play=3 THEN M9(9,9):=M9(9,9)-1; Lp3:=Lp3+300; TEXTOUT("+300",x3,y3+1,2,RGB(40,180,55)); IF Lp3>4800 THEN Lp3:=4800; END; END;
+  WAIT(0.3);
+END;
+IF Skill>0 OR M9(5,13)>0 THEN M9(5,13)▶Skill;
+IF Play=1 THEN Poi1:=Poi1-Cost; M9(1,Skill)-1▶M9(1,Skill); END;
+IF Play=2 THEN Poi2:=Poi2-Cost; M9(2,Skill)-1▶M9(2,Skill); END;
+IF Play=3 THEN Poi3:=Poi3-Cost; M9(3,Skill)-1▶M9(3,Skill); END;
+END;
+IF Skill=9 THEN
+ IF Play=1 AND Lp2=M9(8,6) AND Lp3=M9(9,6) THEN Poi1:=Poi1+Cost; END;
+ IF Play=2 AND Lp1=M9(7,6) AND Lp3=M9(9,6) THEN Poi2:=Poi2+Cost; END;
+ IF Play=3 AND Lp1=M9(7,6) AND Lp2=M9(8,6) THEN Poi3:=Poi3+Cost; END; 
+END; 
+   IF 0≤Skill AND (Skill≤3 OR Skill=8 OR Skill=9 OR Skill=13 OR Skill=16 OR Skill=18) THEN M9(4,Play+10):=M9(4,Play+10)+1;END; 
+IF S≠-2 OR M9(5,21)=-2.99 THEN
+TRUNCATE(RANDOM(0,4.01),2)▶a;
+ROUND(RANDOM(1,2),0)▶Direct;
+IF Direct=2 THEN a:=-a; END;
+END;
+
+      IF TStep=4 AND Poi2=4 THEN L:=v0; ELSE L:=0; END; 
+   IF M9(10,3)>0 AND M9(10,4)=0 AND (times≥1 OR Skill=15) THEN (ROUND(x1,1)-M9(10,1))*ROUND(y1,1)▶M9(5,4);  (ROUND(x2,1)-M9(10,1))*ROUND(y2,1)▶M9(5,5); (ROUND(x3,1)-M9(10,1))*ROUND(y3,1)▶M9(5,6); END; 
+   0▶t▶T▶Sua▶R▶Skill▶Cost▶r▶times▶K▶V; 0▶M9(5,13); Inj:=125; v0:=10; Bomb:=1; θ:=20; Rep:=-1; 20▶d1▶d2▶d3▶d9; 1▶S;
+     IF y1≤-20 AND Play=1 THEN Lp1:=0; -99▶x1▶y1; END;IF y2≤-20 AND Play=2 THEN Lp2:=0; -99▶x2▶y2; END;IF y3≤-20 THEN Lp3:=0; -99▶x3▶y3; END;
+   Play:=Play+1; 0▶M9(10,5); 0▶M9(4,1); 0▶M9(4,5); 0▶M9(4,6); 0▶M9(4,7); 0▶M9(5,12);
+IF Round=Pack THEN
+IP(RANDOM(1,9))▶SinP;
+Pack:=IP(RANDOM(4,8))+Pack;
+TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(255,255,255));
+TRUNCATE(RANDOM(-14,15),1)▶x9; y9:=12;
+ WHILE GETPIX(x9-.4,y9-1.1)≠Black AND GETPIX(x9+.4,y9-1.1)≠Black DO
+   y9:=y9-0.1; WAIT(0.005);
+   IF y9≤-16 THEN SinP:=0; -99▶x9▶y9; BREAK; END;
+   TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200),100,RGB(255,255,255));
+ END;
+END;
+IF TStep=2 THEN TStep:=3; END;
+IF Play>Players THEN 1▶Play; END;
+ IF TStep=4 THEN
+  IF Lp1≥4800 THEN Play:=2; Round:=Round-1; 
+  ELSE
+   TStep:=5; x1:=13; y1:=-2; a:=3.8; B:=-1; Direct:=1;
+   TEXTOUT("很好,那么我接下来演示进阶操作",-10,2,3,RGB(100,200,180));
+   TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+   RECT(G1,x2+1.8,y2+2,x2+2.5,y2-2,RGB(255,200,200));
+   RECT(G1,x1-.5,y1-1.4,x1+3,y1-2.4,RGB(255,200,200));
+   REPEAT B:=B-1;
+    IF B≤0 THEN B:=70; T:=RANDOM(2.2,3.5); END;
+   vy:=(y2-y1-.2+5*T^2)/T;
+   vx:=-(x2-x1-2-a*T^2)/T;
+   A:=ROUND(vy/SIN(B),0);
+   UNTIL ABS(vy/SIN(B)-vx/COS(B))≤1 AND A≤24 END;
+   T:=0; vx:=0; vy:=0;
+  END;
+ TEXTOUT("这个是落踋点",G1,-5,-6,4,RGB(100,200,180),200,RGB(255,200,200));
+ RECT(G1,x1-1,y1-2,x1+2,y1-5,RGB(255,200,200));
+ BLIT(G1);
+  IF Lp2≤2400 THEN TEXTOUT("请不要掉出屏幕外,这会减少一半血",-10,4,3,RGB(255,0,0)); WAIT(0.5); x2:=0; y2:=-3; Lp2:=4800; END;
+ IF Lp1≥4800 THEN IF Lp2<2400 THEN Lp2:=2400; END;
+  IF Poi2=4 THEN TEXTOUT("没关系,第一次没击中很正常",-8,2,3,RGB(100,200,180)); END;
+  IF Poi2=3 THEN
+  TEXTOUT("噢,忘了给你介绍操作方法了",-8,2,3,RGB(100,200,180)); WAIT(1.5);
+  TEXTOUT("轮盘左,右可以移动'你',轮盘上,下调整角度",-12.5,2,3,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("+号,-号调整力度,乘号变换攻击方向",-11,0,3,RGB(100,200,180)); 
+  END;  //Poi2=4
+  IF Poi2=5 AND Lp2<4800 THEN TEXTOUT("请不要击中自己",-6,-2,3,RGB(100,200,180)); END;
+  IF Poi2=7 THEN
+  TEXTOUT("需要稍微点帮助?",-6,2,3,RGB(100,200,180));
+  TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+  TEXTOUT("按下右上方的Help键即可获得帮助",-10,2,3,RGB(100,200,180),300,RGB(255,255,255)); WAIT;
+  END;  //Poi2=8
+ END;
+ END;  // TStep4
+ IF TStep=6 THEN
+  IF Lp2≤2400 THEN TEXTOUT("请不要掉出屏幕外,这会减少一半血",-10,4,3,RGB(255,0,0)); WAIT(0.5); x2:=0; y2:=-3; Lp2:=4600; END;
+  IF Poi2=3 THEN Lp2:=4600; Lp1:=4800; a:=-3.9; Direct:=2;
+  TEXTOUT("现在你也来尝试一下吧",-7,0,3,RGB(100,200,180),200,RGB(255,255,255));
+  RECT(G1,-6,0,6,-6); RECT(G1,x1-2,y1+1,x1-.2,y1-3,RGB(255,200,200));
+  WAIT(1.2);
+  BLIT(G1);
+  END;
+  IF Poi2≥4 AND Lp1≥4800 THEN IF Lp2<2400 THEN Lp2:=2400; END;
+   Play:=2; Round:=Round-1; a:=-3.9; Direct:=2;
+   RECT(G1,x1-.5,y1-1.4,x1+3,y1-2.4,RGB(255,200,200));
+   RECT(G1,x1-2,y1+1,x1-.2,y1-3,RGB(255,200,200));
+   TEXTOUT("这个是落踋点",G1,-5,-6,4,RGB(100,200,180),200,RGB(255,200,200));
+   BLIT(G1);
+  END;
+  IF Lp1<4800 THEN TStep:=7; x2:=-2;
+  TEXTOUT("很好,接下来进行下一步演示",-8,2,3,RGB(100,200,180));
+  TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+  END;  //TStep6
+  IF TStep=7 THEN
+  RECT(G1,-10,-8,-8,-9,RGB(255,200,200));
+  SinP:=1; x9:=-9.5; y9:=12; Play:=2; Lp1:=4800;
+  BLIT(G1);
+  TEXTOUT("在你左边有个包,尝试去捡它",-8,0,3,RGB(100,200,180),200,RGB(255,255,255));
+  END;
+ END;  //TStep7
+ IF TStep=8 THEN TStep:=9; Round:=1; Play:=1;
+ TEXTOUT("可以看到,经过它时并不爆炸",-8,4,3,RGB(100,200,180),200,RGB(255,255,255)); WAIT(1.5);
+ TEXTOUT("只有按下Enter后才会爆炸",-8,2,3,RGB(100,200,180),200,RGB(255,255,255));
+ TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+ TEXTOUT("另外要说一件事,地雷只有在每个玩家的",-12,0,3,RGB(100,200,180),400,RGB(255,255,255)); 
+ TEXTOUT("首回合才会显示出来,平时都是隐形的",-12,-2,3,RGB(100,200,180),400,RGB(255,255,255)); WAIT; 
+ BLIT(G1);
+ TEXTOUT("好了,现在基本的操作已经介绍完成了     ",-12,2,3,RGB(100,200,180),300,RGB(255,255,255)); WAIT(1);
+ TEXTOUT("按下On(左下)可以退出教程了",-10,0,3,RGB(100,200,180),300,RGB(255,255,255));
+ TEXTOUT("若要继续,则按下其他键",-9,-2,3,RGB(100,200,180),300,RGB(255,255,255));
+  WAIT; RECT;
+ END;  //TStep8
+ IF TStep=9 AND Round=1 THEN Poi2:=0; x1:=-6; y1:=-2.6; x2:=6; y2:=-2.6; P:=1; 4800▶Lp1▶Lp2;
+ TEXTOUT("我们先来生成一个地图",-8,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ WAIT(0.6);
+ DIMGROB(G1,32,24); 150▶Y; 0▶A;
+  FOR Z FROM 0 TO 320 DO
+  Y+A▶Y;
+  LINE_P(G1,Z,Y,Z,240,RGB(255,200,200));
+  X+1▶X; WAIT(0.002);
+  BLIT(G1);
+  END;
+  TEXTOUT("按下Apps键(左上)可以再次査看清单",-13,-2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("先来看看技能清单吧",-8,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("然后选择你想学习的技能",-9,0,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("点击任意键来继续",-6,-9,4); WAIT(2); WAIT; S:=1.11; Cover;
+ END;  //STtep9
+ IF TStep<0 THEN
+  IF TStep=-3 THEN
+   IF Lp2=4800 THEN
+   TEXTOUT("你现在加了220的护盾值",-8,2,3,RGB(100,200,180),300,RGB(255,255,255));
+   TEXTOUT("我一会使用 皇家穿甲弹 这个技能",-11,0,3,RGB(100,200,180),300,RGB(255,255,255));
+   ELSE
+   TStep:=10;
+   TEXTOUT("皇家穿甲弹  对有护盾的敌人有奇效",-10,2,3,RGB(100,200,180),300,RGB(255,255,255));
+   END;
+  END;  //Skill3
+  IF TStep=-4 THEN
+  TEXTOUT("空对地导蛋  是在半空中投一枚弹做平抛运动",-12,2,3,RGB(100,200,180),400,RGB(255,255,255)); 
+  END;
+  IF TStep=-5 THEN
+  TEXTOUT("天姫,参上!  从上至下检索障碍物",-12,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  TEXTOUT("遇到障碍物时就会轰炸",-12,0,3,RGB(100,200,180),400,RGB(255,255,255)); 
+  END;
+  IF TStep=-6 THEN
+  TEXTOUT("爆炸飞羊  按下Enter后会起飞,轮盘左.右",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  TEXTOUT("分别对应逆时针.顺时针,放开按键就会直线飞行",-13,0,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-7 THEN
+  TEXTOUT("Fox3导弹  根据炮弹位移量计算伤害",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-9 THEN
+  TEXTOUT("天降正义!  跳得越高伤害越大",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-11 THEN
+  TEXTOUT("升竜拳!  玩家重叠时使用",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-12 THEN
+  TEXTOUT("裁雨留虹  '雨滴'从天而降,击中目标时",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  TEXTOUT("自己回复50护盾值",-13,0,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-13 THEN Ref1:=1;
+  TEXTOUT("抛射物保护  你试着打中我",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-14 THEN
+  TEXTOUT("南蛮冲撞  遇到墙或玩家时会爆炸",-13,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-15 THEN
+  TEXTOUT("堡垒机关枪  其他玩家位置发生改变时自动射击",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-16 THEN
+  TEXTOUT("电弧陷阱  被击中玩家不能移动,不能使用技能",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-17 THEN
+  TEXTOUT("钻井弹  能够穿过一些距离的地图",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-18 THEN
+  TEXTOUT("半程追踪弹  先调好角度力度,再瞄准",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-19 THEN
+  TEXTOUT("散装弹  在首枚炮弹处散发炮弹",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-20 THEN
+  TEXTOUT("战墙  在攻击方向放一堵墙",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END;
+  IF TStep=-21 THEN
+  TEXTOUT("充能左轮枪  能够按键消耗护盾值来提高攻击",-14,2,3,RGB(100,200,180),400,RGB(255,255,255));
+  END; 
+  IF TStep≤-4 THEN TStep:=10; END;
+    IF Poi2<0 THEN Poi2:=Poi2+3; IF Poi1≤10 THEN TEXTOUT("注意:使用技能时要时刻注意点数",-13,-2,3,RGB(230,200,80),400,RGB(255,255,255)); END; END; 
+  TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+ IF TStep=-3 THEN Play:=1; ELSE Play:=2; END;
+ x1:=-6; y1:=-2.6; x2:=6; y2:=-2.6; Z:=0; 0▶Move1▶Move2;
+ RECT_P(G1,0,150,320,300,RGB(255,200,200));
+ BLIT(G1);
+ END;  //STtep Skill
+ IF TStep=10 THEN Play:=2; Lp1:=4800; Lp2:=4800;
+ x1:=-6; y1:=-2.6; x2:=6; y2:=-2.6; Z:=0;
+ RECT_P(G1,0,0,320,149);
+ RECT_P(G1,0,150,320,300,RGB(255,200,200)); BLIT(G1);
+ TEXTOUT("左边会显示使用这个技能时的按键",-13,2,4,RGB(200,100,80),300,RGB(255,255,255)); 
+ TEXTOUT("按下Apps键(左上)可以再次査看清单",-13,0,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;
+END;            //ENTER
+
+IF Skill=0 AND TStep≥8 THEN
+  IF ISKEYDOWN(19) THEN Skill:=-1; Cost:=0;
+  TEXTOUT("跳回合        ",8.5,5.5,3,RGB(180,180,160),300,RGB(255,255,255));
+  END;
+END;
+
+IF ISKEYDOWN(0) AND TStep≥9 THEN S:=1.11; Cover; END;
+
+IF TStep≥9 AND Skill=0 THEN
+IF ISKEYDOWN(47) THEN Skill:=1; Cost:=3; TEXTOUT("伤害提升      ",8.5,5.5,3,RGB(200,80,0),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(48) THEN Skill:=2; Cost:=2; TEXTOUT("进行瞬移      ",8.5,5.5,3,RGB(200,90,0),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(49) THEN Skill:=3; Cost:=3; TEXTOUT("皇家穿甲蛋    ",8.5,5.5,3,RGB(200,90,50),300,RGB(255,255,255));   END;
+IF ISKEYDOWN(42) THEN Skill:=4; Cost:=5; TEXTOUT("空对地导蛋彈  ",8.5,5.5,3,RGB(200,90,100),300,RGB(255,255,255));  END;
+IF ISKEYDOWN(43) THEN Skill:=5; Cost:=10; TEXTOUT("天姫,参上!    ",8.5,5.5,3,RGB(200,90,150),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(44) THEN Skill:=6; Cost:=8; TEXTOUT("爆炸飞羊     ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255));   END;
+IF ISKEYDOWN(37) THEN Skill:=7; Cost:=7; TEXTOUT("Fox3导弹      ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(38) THEN Skill:=8; Cost:=2; TEXTOUT("护盾充能      ",8.5,5.5,3,RGB(200,90,0),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(39) THEN Skill:=9; Cost:=6; TEXTOUT("天降正义!      ",8.5,5.5,3,RGB(255,200,60),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(32) THEN Skill:=10; Cost:=3; TEXTOUT("移动到平台     ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(33) THEN Skill:=11; Cost:=2; Flue2:=10; TEXTOUT("升竜拳!        ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(34) THEN Skill:=12; Cost:=7; TEXTOUT("裁雨留虹       ",8.5,5.5,3,RGB(100,100,255),300,RGB(255,255,255)); END;
+  IF ISKEYDOWN(41) THEN
+IF ISKEYDOWN(47) THEN Skill:=13; Cost:=3; TEXTOUT("抛射物保护     ",8.5,5.5,3,RGB(30,80,255),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(48) THEN Skill:=14; Cost:=6; TEXTOUT("南蛮冲撞      ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(49) THEN Skill:=15; Cost:=6; TEXTOUT("堡垒机关枪     ",8.5,5.5,3,RGB(255,200,100),300,RGB(255,255,255));  END;
+IF ISKEYDOWN(42) THEN Skill:=16; Cost:=3; TEXTOUT("电弧陷阱     ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255));  END;
+IF ISKEYDOWN(43) THEN Skill:=17; Cost:=4; TEXTOUT("钻井弹       ",8.5,5.5,3,RGB(255,100,50),300,RGB(255,255,255));  END;
+IF ISKEYDOWN(44) THEN Skill:=18; Cost:=4; TEXTOUT("半程追踪弹    ",8.5,5.5,3,RGB(190,100,250),300,RGB(255,255,255));  END;
+IF ISKEYDOWN(37) THEN Skill:=19; Cost:=7; TEXTOUT("散装弹        ",8.5,5.5,3,RGB(50,100,200),300,RGB(255,255,255)); END;
+IF ISKEYDOWN(38) THEN Skill:=20; Cost:=2; TEXTOUT("战墙          ",8.5,5.5,3,RGB(50,50,50),300,RGB(255,255,255));    END;
+IF ISKEYDOWN(39) THEN Skill:=21; Cost:=4; TEXTOUT("充能左轮枪      ",8.5,5.5,3,RGB(160,235,255),300,RGB(255,255,255)); END;
+  END;  //Shift
+ IF Z=3 THEN TStep:=-3; K:=30.2; Play:=2; Skill:=8;
+ TEXTOUT("现在我开始演示  皇家穿甲蛋",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ TEXTOUT("一会我会帮你使用 护盾充能 这个技能",-12,0,3,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=3
+ IF Z=4 THEN TStep:=-4; Skill:=4; K:=30;
+ TEXTOUT("现在我开始演示  空对地导蛋",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ TEXTOUT("空对地导蛋彈  ",8.5,5.5,3,RGB(200,90,100),300,RGB(255,255,255));
+ TEXTOUT("按下: 数字1",-15.6,0,4,RGB(200,100,80),100,RGB(255,255,255));
+ WAIT(2);
+ END;  //Skill=4
+ IF Z=5 THEN TStep:=-5; Skill:=5; K:=30;
+  TEXTOUT("现在我开始演示  天姫,参上!",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("天姫,参上!    ",8.5,5.5,3,RGB(200,90,150),300,RGB(255,255,255));
+  TEXTOUT("按下: 数字2",-15.6,0,4,RGB(200,100,80),100,RGB(255,255,255));
+ END;  //Skill=5
+ IF Z=6 THEN TStep:=-6; Skill:=6; K:=30; Play:=1;
+  TEXTOUT("现在我开始演示  爆炸飞羊",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("爆炸飞羊     ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255));
+  TEXTOUT("按下: 数字3",-15.6,0,4,RGB(200,100,80),100,RGB(255,255,255));
+ END;  //Skill=6
+ IF Z=7 THEN TStep:=-7; Skill:=7; Play:=1; Flue1:=10; Sua:=0;
+  TEXTOUT("现在我开始演示  Fox3导弹",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=7
+ IF Z=9 THEN TStep:=-9; Skill:=9; Play:=1; Flue1:=10; Sua:=0;
+  TEXTOUT("现在我开始演示  天降正义!",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=9
+ IF Z=11 THEN TStep:=-11; Skill:=11; Play:=1; Flue1:=10; Sua:=0; x2:=4;
+  TEXTOUT("现在我开始演示  升竜拳!",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=11
+ IF Z=12 THEN TStep:=-12; Skill:=12; Play:=1; K:=30;
+  TEXTOUT("现在我开始演示  裁雨留虹",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("裁雨留虹       ",8.5,5.5,3,RGB(100,100,255),300,RGB(255,255,255));
+  TEXTOUT("按下: 数字9",-15.6,0,4,RGB(200,100,80),100,RGB(255,255,255));
+ END;  //Skill=12
+ IF Z=13 THEN TStep:=-13; Skill:=-2; K:=30; END;
+ IF Z=14 THEN TStep:=-14; Skill:=14; Play:=1; Sua:=0;
+  TEXTOUT("现在我开始演示  南蛮冲撞",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=14
+ IF Z=15 THEN TStep:=-15; Skill:=15; Play:=1; K:=30;
+  TEXTOUT("现在我开始演示  堡垒机关枪",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("1.按下: Shift",-15.6,-6,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+  TEXTOUT("2.按下: 空格",-15.6,-8,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+ END;  //Skill=15
+ IF Z=16 THEN TStep:=-16; Skill:=16; Play:=1; K:=30;
+  TEXTOUT("现在我开始演示  电弧陷阱",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("电弧陷阱     ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255));
+  TEXTOUT("按下: Shift 数字1",-15.6,-6,4,RGB(200,100,80),200,RGB(255,255,255));
+ END;  //Skill=16
+ IF Z=17 THEN TStep:=-17; Skill:=17; Play:=1; K:=30; RECT(G1,x2,y2+1,x2+1.5,y2+5,RGB(255,200,200));
+  TEXTOUT("现在我开始演示  钻井弹",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("钻井弹       ",8.5,5.5,3,RGB(255,100,50),300,RGB(255,255,255));
+  TEXTOUT("按下: Shift 数字2",-15.6,-6,4,RGB(200,100,80),200,RGB(255,255,255));
+ END;  //Skill=17
+ IF Z=18 THEN TStep:=-18; Skill:=18; Play:=1; Sua:=0;
+  TEXTOUT("现在我开始演示  半程追踪弹",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+ END;  //Skill=18
+ IF Z=19 THEN TStep:=-19; Skill:=19; Play:=1; B:=-1; Sua:=0;
+  TEXTOUT("现在我开始演示  散装弹",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("散装弹        ",8.5,5.5,3,RGB(50,100,200),300,RGB(255,255,255));
+  TEXTOUT("1.按下: Shift",-15.6,-6,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+  TEXTOUT("2.按下: 数字4",-15.6,-8,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+   REPEAT B:=B-1;
+   IF B≤0 THEN B:=60; T:=RANDOM(0.8,1.2); END;
+   vy:=(y2-y1-.2+5*T^2)/T;
+   vx:=(x2-x1-.5-a*T^2)/T;
+   A:=ROUND(vy/SIN(B),0);
+   UNTIL ABS(vy/SIN(B)-vx/COS(B))≤2 AND A≤24 END;
+ END;  //Skill=19
+ IF Z=20 THEN TStep:=-20; K:=30; Skill:=-2; END;
+ IF Z=21 THEN TStep:=-21; Skill:=21; Play:=1; Shield1:=300; K:=30;
+  TEXTOUT("现在我开始演示  充能左轮枪",-10,2,4,RGB(100,200,180),300,RGB(255,255,255));
+  TEXTOUT("+300",x1,y1+1,1,RGB(50,80,250));
+  TEXTOUT("充能左轮枪     ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255));
+  TEXTOUT("按下: Shift 数字6",-15.6,-6,4,RGB(200,100,80),200,RGB(255,255,255));
+ END;  //Skill=21
+ IF Z≥3 THEN
+ Lp2:=4800; Round:=0;
+ TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+ END;  //Z≥3
+ IF Z=1 OR Z=2 OR Z=8 OR Z=10 THEN Sua:=0; TStep:=10; Z:=-1; IF Play=1 THEN K:=30; END; END;
+END;
+
+IF ISKEYDOWN(4) AND Play=2 AND TStep≥9 THEN Skill:=0; Cost:=0; RECT(8.5,5.5,16,4.1); END;
+
+IF Sua=0 THEN
+Z:=0;
+REPEAT Z:=Z+1;
+ WHILE M9(11,3*Z-1)=1 AND GETPIX(M9(11,3*Z)+.2,M9(11,3*Z+1)-1)≠Black AND GETPIX(M9(11,3*Z)+.8,M9(11,3*Z+1)-1)≠Black AND M9(11,3*Z+1)>-16 DO
+ RECT(M9(11,3*Z),M9(11,3*Z+1),M9(11,3*Z)+.9,M9(11,3*Z+1)-1);
+ M9(11,3*Z+1):=M9(11,3*Z+1)-0.1;
+ TEXTOUT("雷",M9(11,3*Z),M9(11,3*Z+1),1,RGB(50,30,60)); 
+ END;
+UNTIL Z=M9(11,1) END;
+Z:=0;
+  IF M9(10,3)>0 THEN TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100));
+    RECT(-13.7,5,-8.3,4,RGB(255,130,50),RGB(255,255,255));
+    RECT(-13.5,4.8,-13.5+M9(10,3)/100,4.2,RGB(90,255,130));
+    TEXTOUT(M9(10,3),-12,4.9,1,RGB(60,90,255)); 
+  END;
+ IF Ref1≠0 THEN ARC(x1+0.7,y1-0.7,10,-40,220,RGB(50,60,255)); END;
+ IF Ref2≠0 THEN ARC(x2+0.7,y2-0.7,10,-40,220,RGB(50,60,255)); END;
+ IF Ref3≠0 THEN ARC(x3+0.7,y3-0.7,10,-40,220,RGB(50,60,255)); END;
+RECT(-2.5,6.8,1.7,4);
+IF Direct=2 THEN
+ TEXTOUT("<<  风",-2.5,6.8,2,RGB(0,150,230)); 
+ ELSE
+ TEXTOUT("    风  >>",-2.5,6.8,2,RGB(0,150,230));
+ END;
+TEXTOUT(ABS(a*25),-2,5.5,2,RGB(50,150,240));
+IF Round≥67 THEN
+ IF Round≤70 THEN TEXTOUT("距离下次轰炸还有"+(70-Round)+"回合",-8,3.8,3,RGB(255,50,100)); END;
+ IF 97≤Round AND Round≤100 THEN TEXTOUT("距离下次轰炸还有"+(100-Round)+"回合",-8,3.8,3,RGB(255,50,100)); END;
+ IF 117≤Round AND Round≤120 THEN TEXTOUT("距离下次轰炸还有"+(120-Round)+"回合",-8,3.8,3,RGB(255,50,100)); END;
+END;
+IF M9(5,12)=0 THEN
+IF Play=1 AND Move1≥1 THEN Move1:=Move1-1; END;
+IF Play=2 AND Move2≥1 THEN Move2:=Move2-1; END;
+END;
+ IF Move1≥1 THEN ARC(x1+0.7,y1-0.7,8.5,-40,220,RGB(255,60,255)); LINE(x1,y1,x1+1.3,y1-1.3,RGB(255,20,150)); LINE(x1,y1-1.3,x1+1.3,y1,RGB(255,20,150)); END;
+ IF Move2≥1 THEN ARC(x2+0.7,y2-0.7,8.5,-40,220,RGB(255,60,255)); LINE(x2,y2,x2+1.3,y2-1.3,RGB(255,20,150)); LINE(x2,y2-1.3,x2+1.3,y2,RGB(255,20,150)); END;
+IF Lp1>0 THEN TEXTOUT("我",x1,y1,3,RGB(150,230,180)); ELSE TEXTOUT("我",x1,y1,3,RGB(255,255,255)); END;
+IF Lp2>0 THEN TEXTOUT("你",x2,y2,3,RGB(50,150,255)); ELSE TEXTOUT("你",x2,y2,3,RGB(255,255,255)); END; 
+IF SinP≠0 THEN TEXTOUT("包",x9-0.5,y9+0.5,3,RGB(100,255,200)); END;
+IF M9(10,1)>0 THEN TEXTOUT("枪",M9(10,1)-0.5,M9(10,2)+0.5,1,RGB(255,200,100)); END;
+ IF M9(10,6)≥1 THEN ARC(M9(10,1),M9(10,2),7.2,-40,220,RGB(255,60,255)); END;
+IF Play=1 THEN TEXTOUT("我",.5,10,4,RGB(150,230,180)); END;
+IF Play=2 THEN TEXTOUT("你",.5,10,4,RGB(50,150,255)); END;
+RECT(-6.3,6.8,-3.2,4);
+TEXTOUT(IP(Lp1/48)+"%",-6.3,6.8,2,RGB(150,230,180));
+TEXTOUT(IP(Lp2/48)+"%",-6.3,5.8,2,RGB(50,150,255));
+END;
+
+IF TStep=1 THEN
+ RECT(-16,2,16,-2);
+ TEXTOUT("上方是信息栏",-5,0,4,RGB(100,200,180));
+ TEXTOUT("点击任意键来继续",-6,-9,4);
+ WAIT;
+x1:=-4; y1:=12;
+REPEAT
+  IF GETPIX(x1+0.2,y1-1.4)≠Black AND GETPIX(x1+1,y1-1.4)≠Black THEN
+  RECT(x1,y1,x1+1.3,y1-1.2);
+  y1-0.1▶y1;
+  TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+  END;
+UNTIL GETPIX(x1+0.2,y1-1.4)=Black OR GETPIX(x1+1,y1-1.4)=Black OR y1≤-16
+END;
+ RECT(-16,2,16,-2);
+ TEXTOUT("这个是'我',另一个玩家,现在我来当你的对手",-15.5,2,4,RGB(100,200,180));
+ TEXTOUT("我先来开一炮",-4.5,0,4,RGB(100,200,180));
+ TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+ RECT(-6,-9,7,-12);
+ RECT(-16,2,16,-2);
+ TStep:=2;
+END;
+
+IF (ISKEYDOWN(40) AND Play=2) OR K=40 THEN Dir:=-Dir; WAIT(0.2);
+  LINE(x0+0.6,y0,x0+.6-Dir,y0+TAN(θ),RGB(255,255,255));
+  LINE(x0+0.6,y0,x0+.6+Dir,y0+TAN(θ));
+END;
+IF ((ISKEYDOWN(2) OR ISKEYDOWN(12)) AND Play=2) OR K=2 OR K=12 THEN
+LINE(x0+0.6,y0,x0+0.6+Dir,y0+TAN(θ),RGB(255,255,255));
+  IF θ≤-60 OR θ≥80 THEN
+  45▶θ; Dir:=-Dir;
+  END;
+IF ((ISKEYDOWN(2) AND Play=2) OR K=2) AND θ≤80 THEN θ:=θ+1; END;
+IF ((ISKEYDOWN(12) AND Play=2) OR K=12) AND θ≥-60 THEN θ:=θ-1; END;
+   LINE(x0+.6,y0,x0+.6+Dir,y0+TAN(θ));
+   WAIT(0.02);
+RECT(-16,3.8,-13.5,2.5);
+TEXTOUT(θ,-15.8,3.8,3,RGB(120,120,120));
+END;
+
+IF (ISKEYDOWN(50) OR ISKEYDOWN(45) AND Play=2) OR K=50 OR K=45 THEN
+ IF ((ISKEYDOWN(50) AND Play=2) OR K=50) AND v0<24 THEN
+ v0:=v0+1;
+ END;
+ IF ((ISKEYDOWN(45) AND Play=2) OR K=45) AND v0>5 THEN
+ v0:=v0-1;
+ RECT(-13.5,9.2,-3.5,8.5);
+ END;
+  IF Play=2 THEN TEXTOUT(v0,-6,10.9,2,RGB(100,200,180),100,RGB(255,255,255)); END;
+RECT(-13.5,9.2,-13.5+(v0-5)/1.9,8.5,RGB(v0*10,255-v0*9,v0*4)); 
+WAIT(0.1);
+END;
+
+IF Play=1 THEN
+x0:=x1; y0:=y1;
+IF Lp1≤0 OR y1≤-99 THEN Lp1:=0; IF y1≤-20 THEN -99▶x1▶y1; Sua:=1; END; K:=30; Skill:=-2; END;
+IF -20≤y1 AND y1≤-16 THEN K:=30; Skill:=-2; END;
+IF Sua=0 AND Lp1>0 THEN
+  IF Skill=0 AND M9(5,12)=0 THEN M9(5,12):=-3;
+    IF M9(10,6)≥1 AND M9(5,11)=1 THEN M9(10,6):=M9(10,6)-1; END;
+  IF AFlue1+Flue1>10 OR AFlue1≥10 THEN
+  AFlue1+Flue1-10▶AFlue1;
+  Flue1:=10;
+  ELSE
+  AFlue1+Flue1▶Flue1;
+  IF AFlue1<10 THEN  0▶AFlue1; END; 
+  END;
+    Poi1:=Poi1+1; M9(7,5):=Poi1;
+ END;
+  Cover; 1▶Sua;
+  TEXTOUT(Round,-2.5,9.4,4);
+  TEXTOUT(Lp1,7,11,4,RGB(50+IP((4800-Lp1)/24),240-IP((4800-Lp1)/20),50),300,RGB(255,255,255));
+  TEXTOUT(Shield1,7,7.2,3,RGB(50,50,200),300,RGB(255,255,255));
+  RECT(3,8.8,3+Lp1/400,7.7,RGB(50+IP((4800-Lp1)/24),240-IP((4800-Lp1)/20),50));
+  RECT(3,8.8,3+Shield1/400,7.7,RGB(50,50,250));
+  TEXTOUT(Poi1,-9.2,7,4,RGB(50,150,200),300,RGB(255,255,255));
+  TEXTOUT(AFlue1,-6,8,2,RGB(180,120,120),200,RGB(255,255,255));
+  TEXTOUT("作者:黎明lb",-16,-16);
+  RECT(-15.4,4.2+Flue1/2,-14.2,4.2,RGB(IP(255-Flue1*20),IP(Flue1*25.5),IP(Flue1*10)));
+  RECT(-13.5,9.2,-13.5+(v0-5)/1.9,8.5,RGB(v0*10,255-v0*9,v0*4)); 
+  TEXTOUT("⇓",x1+.5,y1+2,4,RGB(50,255,100));
+END;
+
+ IF (K=7 OR K=8) AND Lp1>0 THEN
+  IF K=8 AND Flue1>0 THEN
+     IF GETPIX(x1+1.4,y1-0.4)≠Black AND GETPIX(x1+1.4,y1-.2)≠Black THEN
+      x1+0.1▶x1;
+      Flue1-0.1▶Flue1;
+     END; 
+  END;
+  IF K=7 AND Flue1>0 THEN
+     IF GETPIX(x1-0.2,y1-0.4)≠Black AND GETPIX(x1-.1,y1-.2)≠Black THEN
+      x1-0.1▶x1;
+      Flue1-0.1▶Flue1;
+     END; 
+  END;
+      IF (GETPIX(x1+.2,y1-1.4)=Black OR GETPIX(x1+1.3,y1-1.4)=Black) AND Flue1>0 THEN
+       y1+0.2▶y1;
+      END;
+  RECT(-15.4,4.2,-14.2,9.2);
+  RECT(-15.4,4.2+Flue1/2,-14.2,4.2,RGB(IP(255-Flue1*20),IP(Flue1*25.5),IP(Flue1*10)));
+  WAIT(0.02);
+  RECT(x1-0.1,y1-0.3,x1+1.3,y1-1.2);
+  TEXTOUT("我",x1,y1,3,RGB(150,230,180));
+ END;
+END;
+
+IF Play=2 THEN
+x0:=x2; y0:=y2;
+IF Lp2≤0 OR y2≤-99 THEN Lp2:=0;  IF y2≤-20 THEN -99▶x2▶y2; Sua:=1; END; K:=30; Skill:=-2; END;
+  IF y2≤-15 AND (TStep=4 OR TStep=6 OR TStep=7) THEN x2:=-2; y2:=0; Flue2:=10; 
+    TEXTOUT("请不要掉出屏幕外,这会减少一半血",-10,4,3,RGB(255,0,0)); WAIT(0.5);
+    IF TStep=7 THEN TEXTOUT("在空中长按方向键能够滑翔",-10,2,3,RGB(255,0,0)); END;
+  END;
+IF -20≤y2 AND y2≤-16 THEN K:=30; Skill:=-2; END;
+IF Sua=0 AND Lp2>0 THEN
+ IF Skill=0 AND M9(5,12)=0 THEN M9(5,12):=-3;
+    IF M9(10,6)≥1 AND M9(5,11)=2 THEN M9(10,6):=M9(10,6)-1; END;
+  IF AFlue2+Flue2>10 OR AFlue2≥10 THEN
+  AFlue2+Flue2-10▶AFlue2; Flue2:=10;
+  ELSE
+  AFlue2+Flue2▶Flue2;
+  IF AFlue2<10 THEN  0▶AFlue2; END; 
+  END;
+     Poi2:=Poi2+1; M9(8,5):=Poi2;
+ END;
+  Cover; 1▶Sua;
+  TEXTOUT(Round,-2.5,9.4,4);
+  TEXTOUT(Lp2,7,11,4,RGB(50+IP((4800-Lp2)/24),240-IP((4800-Lp2)/20),50),300,RGB(255,255,255));
+  TEXTOUT(Shield2,7,7.2,3,RGB(50,50,200),300,RGB(255,255,255));
+  RECT(3,8.8,3+Lp2/400,7.7,RGB(50+IP((4800-Lp2)/24),240-IP((4800-Lp2)/20),50));
+  RECT(3,8.8,3+Shield2/400,7.7,RGB(50,50,250));  
+  TEXTOUT(Poi2,-9.2,7,4,RGB(50,150,200),300,RGB(255,255,255));
+  TEXTOUT(AFlue2,-6,8,2,RGB(180,120,120),200,RGB(255,255,255));
+  RECT(-15.4,4.2+Flue2/2,-14.2,4.2,RGB(IP(255-Flue2*20),IP(Flue2*25.5),IP(Flue2*10)));
+  RECT(-13.5,9.2,-13.5+(v0-5)/1.9,8.5,RGB(v0*10,255-v0*9,v0*4)); 
+  TEXTOUT("⇓",x2+0.5,y2+2,4,RGB(50,255,100));
+END;
+
+ IF (ISKEYDOWN(8) OR ISKEYDOWN(7) OR K=8) AND Move2=0 AND Lp2>0 THEN
+  IF (ISKEYDOWN(8) OR K=8) AND Flue2>0 THEN 
+     IF GETPIX(x2+1.4,y2-0.4)≠Black AND GETPIX(x2+1.4,y2-.2)≠Black THEN
+      x2+0.1▶x2;
+      Flue2-0.1▶Flue2;
+     END; 
+  END;
+  IF ISKEYDOWN(7) AND Flue2>0 THEN
+     IF GETPIX(x2-0.2,y2-0.4)≠Black AND GETPIX(x2-.1,y2-.2)≠Black AND Flue2>0 THEN
+      x2-0.1▶x2;
+      Flue2-0.1▶Flue2;
+     END; 
+  END;
+      IF (GETPIX(x2+.2,y2-1.4)=Black OR GETPIX(x2+1.3,y2-1.4)=Black) AND Flue2>0 THEN
+       y2+0.2▶y2;
+      END;
+  RECT(-15.4,4.2,-14.2,9.2);
+  RECT(-15.4,4.2+Flue2/2,-14.2,4.2,RGB(IP(255-Flue2*20),IP(Flue2*25.5),IP(Flue2*10)));
+  WAIT(0.02);
+  RECT(x2-0.1,y2-0.3,x2+1.3,y2-1.2);
+  TEXTOUT("你",x2,y2,3,RGB(50,150,255));
+ END;
+END;
+
+IF TStep=2 THEN
+ IF θ<76 OR 8<v0 THEN
+  IF 8≤v0 THEN K:=45; TEXTOUT("按下: -键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+  IF θ≤76 THEN K:=2;  TEXTOUT("按下: 轮盘上",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+  IF GETKEY≠-1 THEN TEXTOUT("请不要阻止我",-4,-2,3,RGB(255,0,0)); END; 
+ WAIT(0.02);
+ ELSE K:=30; END;
+END;
+
+IF TStep=3 THEN
+ TEXTOUT("没打到?",-2.5,2,3,RGB(100,200,180));
+ WAIT(1.5);
+ TEXTOUT("原来刚才没注意到风",-6.5,4,3,RGB(240,100,180));
+  FOR Z FROM 1 TO 6 DO
+  RECT(-2.7,7,2,4,RGB(0,255,0),RGB(255,255,255));
+  WAIT(0.3);
+  RECT(-2.7,7,2,4,RGB(255,0,0),RGB(255,255,255));
+   IF Direct=2 THEN
+   TEXTOUT("<<  风",-2.5,6.8,2,RGB(0,150,230)); 
+   ELSE
+   TEXTOUT("    风  >>",-2.5,6.8,2,RGB(0,150,230));
+   END;
+   TEXTOUT(ABS(a*25),-2,5.5,2,RGB(50,150,240));
+  WAIT(0.3);
+  END;
+  WAIT(.8);
+  x1:=-15; y1:=3; RECT(G1,x1-1,y1-2,x1+2,y1-5,RGB(255,200,200));
+  Sua:=0; S:=0; BLIT(G1); Cover; TStep:=4;
+  TEXTOUT("现在你来尝试击中我吧",-7,2,3,RGB(100,200,180));
+  TEXTOUT("按下Enter即可发射",-7,0,3,RGB(100,200,180));
+END;
+
+IF TStep=4 THEN
+ IF Poi2=5 AND L=10 THEN L:=0;
+ TEXTOUT("注意调整力度",-6,-2,3,RGB(100,200,180),200,RGB(255,255,255));
+  FOR Z FROM 1 TO 6 DO
+  RECT(-13.7,9.4,-3.3,8.3,RGB(255,255,255));
+  WAIT(0.2);
+  RECT(-13.7,9.4,-3.3,8.3,RGB(120,120,255),RGB(255,255,255));
+  RECT(-13.5,9.2,-13.5+(v0-5)/1.9,8.5,RGB(v0*10,255-v0*9,v0*4));
+  WAIT(0.2);
+  END;
+ END;
+ IF Lp1=4800 THEN
+  IF ISKEYDOWN(3) AND Poi2≥8 THEN A:=0; B:=-60;
+   REPEAT B:=B-1;
+    IF B≤0 THEN B:=50; T:=RANDOM(0.8,1.5); END;
+   vy:=(y1-y2-.2+5*T^2)/T;
+   vx:=-(x1-x2-.5-a*T^2)/T;
+   A:=ROUND(vy/SIN(B),0);
+   TEXTOUT("请调整:角度: "+B+" 力度: "+A,-8,0,3,RGB(100,200,180),200,RGB(255,255,255));
+   TEXTOUT("+号,-号调整力度,轮盘上,下调整角度",-10,-2,3,RGB(100,200,180),300,RGB(255,255,255));
+   UNTIL ABS(vy/SIN(B)-vx/COS(B))≤2 AND A≤24 END;
+   T:=0; vx:=0; vy:=0;
+  END;
+ END;
+END;
+
+IF TStep=5 THEN
+ IF θ<B OR v0<A THEN
+  IF v0≤A THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+  IF θ≤B THEN K:=2;  TEXTOUT("按下: 轮盘上",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+  IF Dir=1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+ ELSE Poi2:=3; TStep:=6; K:=30; A:=0; B:=0; END;
+END;
+
+IF TStep=7 AND Lp2≥4800 THEN
+ IF Flue2≥0.1 THEN K:=8; ELSE K:=-1;
+ TEXTOUT("如你所见,它并没有爆炸       ",-8,0,3,RGB(100,200,180),200,RGB(255,255,255)); WAIT(1.8); TStep:=8;
+ TEXTOUT("现在按下退格键(Del) 和 Enter来跳回合",-12,-2,3,RGB(100,200,180),300,RGB(255,255,255)); 
+ END;
+END;
+
+IF TStep=-3 AND Skill≠8 THEN
+  IF θ<65 OR v0<12 THEN
+   IF θ=40 THEN
+    TEXTOUT("皇家穿甲蛋    ",8.5,5.5,3,RGB(200,90,50),300,RGB(255,255,255)); 
+    TEXTOUT("按下: 空格",-15.6,-3,4,RGB(200,100,80),100,RGB(255,255,255));
+   END;
+   IF v0≤12 THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+   IF θ≤65 THEN K:=2;  TEXTOUT("按下: 轮盘上",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+   IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+  ELSE K:=30; Skill:=3; END;
+END;
+
+IF TStep=-7 THEN
+  IF θ<25 OR v0<16 THEN
+   IF θ=25 THEN
+    TEXTOUT("Fox3导弹      ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255));
+    TEXTOUT("按下: 数字4",-15.6,-6,4,RGB(200,100,80),100,RGB(255,255,255));
+   END;
+    IF v0≤16 THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF θ≤65 THEN K:=2;  TEXTOUT("按下: 轮盘上  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+   ELSE K:=30;  Skill:=7;
+   END;
+  IF Flue1>2 THEN K:=7;
+  TEXTOUT("按下: 轮盘左  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255));
+  END;
+END;
+
+IF TStep=-9 THEN
+  IF v0<20 THEN
+   IF θ=25 THEN
+    TEXTOUT("天降正义!      ",8.5,5.5,3,RGB(255,200,60),300,RGB(255,255,255));
+    TEXTOUT("按下: 数字6",-15.6,-6,4,RGB(200,100,80),100,RGB(255,255,255));
+   END;
+    IF v0≤20 THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF θ≤76 THEN K:=2;  TEXTOUT("按下: 轮盘上  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+   ELSE K:=30;  Skill:=9;
+   END;
+  IF Flue1>5 THEN K:=7;
+  TEXTOUT("按下: 轮盘左  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255));
+  END;
+END;
+
+IF TStep=-11 THEN
+  IF Flue1≥0.1 THEN K:=8;
+   IF Flue1=7 THEN
+   TEXTOUT("升竜拳!        ",8.5,5.5,3,RGB(255,100,255),300,RGB(255,255,255));
+   END;
+  TEXTOUT("按下: 轮盘右  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255));
+  ELSE K:=30; Skill:=11; END;
+END;
+
+IF TStep=-14 THEN
+ IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255));
+ ELSE  K:=30; Skill:=14;
+ RECT(G1,x2-2,y2,x2-1,y2-2,RGB(255,200,200));
+ TEXTOUT("1.按下: Shift",-15.6,-6,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.8);
+ TEXTOUT("2.按下: 数字6",-15.6,-8,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.8);
+ TEXTOUT("南蛮冲撞      ",8.5,5.5,3,RGB(200,90,200),300,RGB(255,255,255)); WAIT(0.8);
+ END;
+END;
+
+IF TStep=-18 THEN
+  IF v0<20 THEN
+   IF θ=25 THEN
+    TEXTOUT("半程追踪弹    ",8.5,5.5,3,RGB(190,100,250),300,RGB(255,255,255));
+    TEXTOUT("1.按下: Shift",-15.6,-6,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+    TEXTOUT("2.按下: 数字3",-15.6,-8,3,RGB(200,100,80),100,RGB(255,255,255)); WAIT(0.5);
+   END;
+    IF v0≤20 THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF θ≤70 THEN K:=2;  TEXTOUT("按下: 轮盘上  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END; 
+   ELSE K:=30;  Skill:=18;
+   END;
+END;
+
+IF TStep=-19 THEN
+  IF v0<A THEN
+    IF v0≤A THEN K:=50; TEXTOUT("按下: +键     ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF θ≤B THEN K:=2;  TEXTOUT("按下: 轮盘上  ",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+    IF Dir=-1 THEN K:=40; TEXTOUT("按下: x键",-15.6,0,2,RGB(200,100,80),100,RGB(255,255,255)); END;
+  ELSE  K:=30;  Skill:=19; Dir:=1;
+  END;
+END;
+
+IF SinP≠0 THEN
+ IF ABS(x9-x2-.5)≤1.2 AND ABS(y9-y2+.5)≤1.2 THEN
+   IF SinP=1 THEN IF Lp2+300≤4800 THEN Lp2:=Lp2+300; ELSE Lp2:=4800; END; TEXTOUT("+300",x2,y2+1,2,RGB(50,255,50)); END;
+   SinP:=0; Sua:=0;-99▶x9▶y9; M9(5,12):=1;
+   IF TStep=7 THEN
+   TEXTOUT("拾取包的好处多多,记得经常捡",-8,0,3,RGB(100,200,180),200,RGB(255,255,255));
+   RECT(3,8.8,3+Lp2/400,7.7,RGB(50+IP((4800-Lp2)/24),240-IP((4800-Lp2)/20),50));
+   TEXTOUT(Lp2,7,11,4,RGB(50+IP((4800-Lp2)/24),240-IP((4800-Lp2)/20),50),300,RGB(255,255,255));
+   TEXTOUT("点击任意键来继续",-6,-9,4); WAIT(1.3); WAIT;
+   x2:=0; y2:=-3.5; M9(11,2):=1; M9(11,3):=3; M9(11,4):=-1; BLIT(G1);
+   TEXTOUT("好了,现在平台会有颗地雷      ",-8,0,3,RGB(100,200,180),200,RGB(255,255,255));
+   TEXTOUT("我会操纵你过去",-8,-2,3,RGB(100,200,180),200,RGB(255,255,255));
+   TEXTOUT("点击任意键来继续",-6,-9,4); WAIT;
+   END; 
+ END;
+END;
+
+UNTIL Play=-1 END;
+END;
