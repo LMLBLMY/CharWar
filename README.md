@@ -46,3 +46,9 @@ PlayersData[1][2] = y1;
 数据[2][2] = y2;
 ```
 ~~the "数据" is same as PlayersData~~
+
+
+关于游戏及游玩(About the Game & Play)
+###
+游戏内 UI::::::
+
