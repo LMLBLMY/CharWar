@@ -48,11 +48,8 @@ PlayersData[1][2] = y1;
 ~~the "数据" is same as PlayersData~~
 
 
-关于游戏及游玩(About the Game & Play)
-###
-游戏内 UI::::::
-关于游戏及游玩(About the Game & Play)
-###
+### 关于游戏及游玩(About the Game & Play)
+
 游戏内 UI::::::
 ![](https://github.com/LMLBLMY/CharWar/blob/master/UI%20description(UI%20%E8%AF%B4%E6%98%8E)/UI%E8%AF%B4%E6%98%8E(C%E7%89%88).png)
 
