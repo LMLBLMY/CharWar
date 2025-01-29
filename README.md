@@ -81,11 +81,14 @@ Welcome to feedback bugs<br>
 ⑤技能：点击  `当前技能` 或者 按下 `Tab`键 查看技能帮助.  数字键盘对应相应技能(`0`至`9`)，额外技能需先按  `*`(乘号)键 或者 `/`(除号)键来切换技能组，`Esc`(取消)键 或 `Backspace`(退格)键  取消选用技能<br>
 
 ① Movement: Pressing the `A` and `D` keys respectively moves the character left and right (this action will consume fuel for the current round). <br>
-  → Fuel: It is divided into round fuel (the green bar in the upper left corner) and total fuel (the number below the power bar). <ins>The maximum round fuel is 10</ins>, and it will be replenished from the total fuel when it's your turn again. <br>
+  → Fuel: It is divided into round fuel (the green bar in the upper left corner) and total fuel (the number below the power bar).<br>
+  <ins>The maximum round fuel is 10</ins>, and it will be replenished from the total fuel when it's your turn again. <br>
   → In the air, you can glide or fall (at an 80° angle downward).<br>
   → After falling off a cliff, you will lose **25%** of your health and randomly respawn in the air.<br>
-② Attack angle and direction: Pressing the `W` and `S` keys respectively increases and decreases the launch angle (<ins>maximum 80°</ins>, <ins>minimum -60°</ins>, it will automatically switch direction if exceeded, or you can press the `Q` key to switch direction).<br>
+② Attack angle and direction: Pressing the `W` and `S` keys respectively increases and decreases the launch angle<br>
+  (<ins>maximum 80°</ins>, <ins>minimum -60°</ins>, it will automatically switch direction if exceeded, or you can press the `Q` key to switch direction).<br>
 ③ Power: Pressing the `+` (plus) and `-` (minus) keys respectively increases and decreases the power (<ins>minimum 5</ins>, <ins>maximum 23</ins>).<br>
 ④ Launch: Press the `Enter` key to launch. **Please pay attention to the wind direction and level, and adjust the angle and power accordingly.** <br>
 ⑤ Skills: Click on the `Current Skill` or press the `Tab` key to view the skill help. <br>
-  The number keys correspond to the respective skills (`0` to `9`). For additional skills, you need to first press the `*` (asterisk) key or `/` (slash) key to switch the skill group. Press the `Esc` (escape) key or `Backspace` (backspace) key to cancel the selected skill.
+  The number keys correspond to the respective skills (`0` to `9`). For additional skills, you need to first press the `*` (asterisk) key or `/` (slash) key to switch the skill group.<br>
+  Press the `Esc` (escape) key or `Backspace` (backspace) key to cancel the selected skill.
