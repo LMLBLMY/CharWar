@@ -23,6 +23,8 @@ There is no English version yet<br>
 * The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details
 * Some function implementations are done by GPT
 
+>[EasyX](https://easyx.cn/)
+
 地图的说明(Description of map)
 ---
 地图的比例是`4:3`，有考虑到做全屏，但是那应该是之后要做的事了。`320*240`是HP Prime计算器的屏幕分辨率，与C语言版本的是兼容的(默认`768*576`)。<br>
@@ -49,12 +51,12 @@ PlayersData[1][2] = y1;
 
 
 ### 关于游戏及游玩(About the Game & Play)
-希望你能认真看完这篇帮助，若是看了还是解决不了困难可以联系作者<br>
+希望你能认真看完这篇帮助，若是看了还是解决不了困难可以联系作者LMLB<br>
 这个游戏花了我很长时间，所以感谢你能游玩本游戏，感谢支持，祝你玩得开心。<br>
 如果你想要帮助我改进程序或者进行代码交流，请联系我q：2606575063<br>
 欢迎反馈bug<br><br>
 
-I hope you can read this help carefully, if you still can't solve the difficulties you can contact the author!<br>
+I hope you can read this help carefully, if you still can't solve the difficulties you can contact the author LMLB!<br>
 This game took me a long time, so thank you for playing this game, thanks for the support and have fun.<br>
 If you want to help me improve the programm or do a code exchange, please contact me discord: lamoonly  (Stochastic Online:D)<br>
 Welcome to feedback bugs<br>
@@ -70,9 +72,9 @@ Welcome to feedback bugs<br>
 ①移动：AD键分别为人物向左.向右移动(这个行为将消耗本回合燃油)
           →燃油：分为回合燃油(左上角绿色柱子）和总燃油(力度条下面的字).
                         回合燃油最大为10，下次轮到自己时从总燃油补充到回合燃油
-          →在空中可以滑翔(80°角向下)
+          →在空中可以~~滑翔~~掉落(80°角向下)
           →掉下悬崖后将会扣25%的血并随机在空中复活
 ②攻击角度与攻击方向：WS键分别为增大与减小发射角度（最大为80，最小为-60，超过自动换方向，也能按  Q键  换方向）
-③力度：+(加号)键  与  -(减号)键  分别为力度的加减，最低为5，最大23
-④发射：按下  Enter(回车)键  发射.请注意风向与等级，调整好角度与力度
-⑤技能：点击  当前技能  查看技能帮助.  数字键盘对应相应技能(0至9)，额外技能需先按  *(乘号)键  ，Esc(取消)键 或 Backspace(退格)键  取消选用技能或转换
+③力度：`+`(加号)键  与  `-`(减号)键  分别为力度的加减，<ins>最低为5</ins>，<ins>最大23</ins>
+④发射：按下  `Enter`(回车)键  发射.请注意风向与等级，调整好角度与力度
+⑤技能：点击  `当前技能` 或者 按下 `F`键 查看技能帮助.  数字键盘对应相应技能(`0`至`9`)，额外技能需先按  `*`(乘号)键  ，`Esc`(取消)键 或 `Backspace`(退格)键  取消选用技能或转换
