@@ -78,7 +78,8 @@ Welcome to feedback bugs<br>
 ②攻击角度与攻击方向： `W`, `S` 键分别为增大与减小发射角度（<ins>最大为80</ins>，<ins>最小为-60</ins>，超过自动换方向，也能按  `Q`键  换方向）<br>
 ③力度：`+`(加号)键  与  `-`(减号)键  分别为力度的加减，<ins>最低为5</ins>，<ins>最大23</ins><br>
 ④发射：按下  `Enter`(回车)键  发射. **请注意风向与等级，调整好角度与力度** <br>
-⑤技能：点击  `当前技能` 或者 按下 `Tab`键 查看技能帮助.  数字键盘对应相应技能(`0`至`9`)，额外技能需先按  `*`(乘号)键 或者 `/`(除号)键来切换技能组，`Esc`(取消)键 或 `Backspace`(退格)键  取消选用技能<br>
+⑤技能：点击  `当前技能` 或者 按下 `Tab`键 查看技能帮助.  数字键盘对应相应技能(`0`至`9`)，额外技能需先按  `*`(乘号)键 或者 `/`(除号)键来切换技能组<br>
+  `Esc`(取消)键 或 `Backspace`(退格)键  取消选用技能<br>
 
 ① Movement: Pressing the `A` and `D` keys respectively moves the character left and right (this action will consume fuel for the current round). <br>
   → Fuel: It is divided into round fuel (the green bar in the upper left corner) and total fuel (the number below the power bar).<br>
@@ -90,5 +91,27 @@ Welcome to feedback bugs<br>
 ③ Power: Pressing the `+` (plus) and `-` (minus) keys respectively increases and decreases the power (<ins>minimum 5</ins>, <ins>maximum 23</ins>).<br>
 ④ Launch: Press the `Enter` key to launch. **Please pay attention to the wind direction and level, and adjust the angle and power accordingly.** <br>
 ⑤ Skills: Click on the `Current Skill` or press the `Tab` key to view the skill help. <br>
-  The number keys correspond to the respective skills (`0` to `9`). For additional skills, you need to first press the `*` (asterisk) key or `/` (slash) key to switch the skill group.<br>
+  The number keys correspond to the respective skills (`0` to `9`). <br>
+  For additional skills, you need to first press the `*` (asterisk) key or `/` (slash) key to switch the skill group.<br>
   Press the `Esc` (escape) key or `Backspace` (backspace) key to cancel the selected skill.
+
+### 常见错误或问题(Common Errors or Problems)
+①出现大黑框(控制台)<br>
+  一般是Win11版本才会出现的问题，解决方法为<br>
+  `设置`->`搜索终端`->`终端设置`->`终端选项`(该页面在`系统`>`开发者选项`)->选择 `Windows控制台主机`<br>
+  代码上我尽力了，改来改去也没有去掉大黑框<br>
+②对战游戏中载入地图一片黑<br>
+  ~~游戏路径错误，旧版本(此版本是新版本，过去软弱的版本，已经死了)还是指定路径的(解压文件必须在D:\CharWar)~~<br>
+  图片丢失/损坏/格式错误(Ver241226还是可能会有地图传输错误的问题)<br>
+⑧有BUG<br>
+⑨有笨蛋<br><br>
+
+①A large black box appears (console)<br>
+  Generally, it is a problem that occurs only in Win11 version, the solution is as follows<br>
+  `Settings`->`Search Terminal`->`Terminal Settings`->`Terminal Options` (the page is in `System`>`Developer Options`)->Select `Windows Console Host`.<br>
+  I did my best with the code, and changing it didn't get rid of the big black box<br>
+②Black map loading in Versus game.<br>
+  ~~Wrong game path, old version (this is a new version, past weak version, dead) or specified path (unzip file must be in D:\CharWar)~~ <br>
+  Missing/corrupted/wrongly formatted images (Ver241226 still may have map transfer errors)<br>
+⑧BUG<br>
+⑨PLAYERS ARE BAKA<br>
