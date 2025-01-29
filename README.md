@@ -72,20 +72,20 @@ Welcome to feedback bugs<br>
 
 ①移动：`A`, `D`键分别为人物向左.向右移动(这个行为将消耗本回合燃油)<br>
   →燃油：分为回合燃油(左上角绿色柱子）和总燃油(力度条下面的字).<br>
-   回合燃油最大为10，下次轮到自己时从总燃油补充到回合燃油<br>
+   <ins>回合燃油最大为10</ins>，下次轮到自己时从总燃油补充到回合燃油<br>
   →在空中可以~~滑翔~~掉落(80°角向下)<br>
-  →掉下悬崖后将会扣25%的血并随机在空中复活<br>
+  →掉下悬崖后将会扣 **25%** 的血并随机在空中复活<br>
 ②攻击角度与攻击方向： `W`, `S` 键分别为增大与减小发射角度（<ins>最大为80</ins>，<ins>最小为-60</ins>，超过自动换方向，也能按  `Q`键  换方向）<br>
 ③力度：`+`(加号)键  与  `-`(减号)键  分别为力度的加减，<ins>最低为5</ins>，<ins>最大23</ins><br>
 ④发射：按下  `Enter`(回车)键  发射. **请注意风向与等级，调整好角度与力度** <br>
 ⑤技能：点击  `当前技能` 或者 按下 `Tab`键 查看技能帮助.  数字键盘对应相应技能(`0`至`9`)，额外技能需先按  `*`(乘号)键 或者 `/`(除号)键来切换技能组，`Esc`(取消)键 或 `Backspace`(退格)键  取消选用技能<br>
 
 ① Movement: Pressing the `A` and `D` keys respectively moves the character left and right (this action will consume fuel for the current round). <br>
-  → Fuel: It is divided into round fuel (the green bar in the upper left corner) and total fuel (the number below the power bar). The maximum round fuel is 10, and it will be replenished from the total fuel when it's your turn again. <br>
+  → Fuel: It is divided into round fuel (the green bar in the upper left corner) and total fuel (the number below the power bar). <ins>The maximum round fuel is 10</ins>, and it will be replenished from the total fuel when it's your turn again. <br>
   → In the air, you can glide or fall (at an 80° angle downward).<br>
-  → After falling off a cliff, you will lose 25% of your health and randomly respawn in the air.<br>
-② Attack angle and direction: Pressing the `W` and `S` keys respectively increases and decreases the launch angle (maximum 80°, minimum -60°, it will automatically switch direction if exceeded, or you can press the `Q` key to switch direction).<br>
-③ Power: Pressing the `+` (plus) and `-` (minus) keys respectively increases and decreases the power (minimum 5, maximum 23).<br>
+  → After falling off a cliff, you will lose **25%** of your health and randomly respawn in the air.<br>
+② Attack angle and direction: Pressing the `W` and `S` keys respectively increases and decreases the launch angle (<ins>maximum 80°</ins>, <ins>minimum -60°</ins>, it will automatically switch direction if exceeded, or you can press the `Q` key to switch direction).<br>
+③ Power: Pressing the `+` (plus) and `-` (minus) keys respectively increases and decreases the power (<ins>minimum 5</ins>, <ins>maximum 23</ins>).<br>
 ④ Launch: Press the `Enter` key to launch. **Please pay attention to the wind direction and level, and adjust the angle and power accordingly.** <br>
 ⑤ Skills: Click on the `Current Skill` or press the `Tab` key to view the skill help. <br>
   The number keys correspond to the respective skills (`0` to `9`). For additional skills, you need to first press the `*` (asterisk) key or `/` (slash) key to switch the skill group. Press the `Esc` (escape) key or `Backspace` (backspace) key to cancel the selected skill.
