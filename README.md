@@ -51,5 +51,7 @@ PlayersData[1][2] = y1;
 ### 关于游戏及游玩(About the Game & Play)
 
 游戏内 UI::::::
+![UI说明](https://github.com/LMLBLMY/CharWar/blob/master/UI%20description(UI%20%E8%AF%B4%E6%98%8E)/UI%E8%AF%B4%E6%98%8E(C%E7%89%88).png)
 
+![UI description](https://github.com/LMLBLMY/CharWar/blob/master/UI%20description(UI%20%E8%AF%B4%E6%98%8E)/UI%20description(Ver%20C).png)
 
