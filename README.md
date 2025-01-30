@@ -98,7 +98,7 @@ Welcome to feedback bugs<br>
   → Press the `Esc` (escape) key or `Backspace` (backspace) key to cancel the selected skill.
 
 ### 常见错误或问题(Common Errors or Problems)
-①出现大黑框(控制台)<br>
+①出现大黑框或者无限挂起(控制台问题)<br>
   一般是Win11版本才会出现的问题，解决方法为<br>
   `设置`->`搜索终端`->`终端设置`->`终端选项`(该页面在`系统`>`开发者选项`)->选择 `Windows控制台主机`<br>
   代码上我尽力了，改来改去也没有去掉大黑框<br>
