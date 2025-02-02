@@ -105,6 +105,9 @@ Welcome to feedback bugs<br>
 ②对战游戏中载入地图一片黑<br>
   ~~游戏路径错误，旧版本(此版本是新版本，过去软弱的版本，已经死了)还是指定路径的(解压文件必须在D:\CharWar)~~<br>
   图片丢失/损坏/格式错误(Ver241226还是可能会有地图传输错误的问题)<br>
+③进入游戏后非常卡，表现为缓慢坠落，并一开始自动选择技能，重启游戏无效。<br>
+  推测为未清空缓冲区<br>
+  其解决方法之一为随便按技能区按键<br>
 ⑧有BUG<br>
 ⑨有笨蛋<br><br>
 
@@ -115,5 +118,14 @@ Welcome to feedback bugs<br>
 ②Black map loading in Versus game.<br>
   ~~Wrong game path, old version (this is a new version, past weak version, dead) or specified path (unzip file must be in D:\CharWar)~~ <br>
   Missing/corrupted/wrongly formatted images (Ver241226 still may have map transfer errors)<br>
+③ After entering the game, it is very laggy, showing as a slow drop, and it automatically selects skills at the beginning; <br>
+  restarting the game does not help. <br>
+  It is speculated that the buffer has not been cleared. One solution is to randomly press the skill area keys.<br>
 ⑧BUG<br>
 ⑨PLAYERS ARE BAKA<br>
+
+
+<br><br><br><br><br>
+250128：更新了显示血条<br>
+0202：优化了技能帮助界面。发现了BUG(见问3，未解决)
+
