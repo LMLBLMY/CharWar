@@ -17,13 +17,11 @@ There is no English version yet<br>
 ---
 * 编译器的编译环境应该为`Unicode`环境
 * 确保头文件包含`CharWar.h`，`prime.h`，`easyx.h`
-* 该工程并未包含`easyx.h`和`graphics.h`以及其他的`lib`文件，详细请查看[EasyX](https://easyx.cn/)官网
-* 有部分函数实现是由AI完成的<br><br>
+* 该工程并未包含`easyx.h`和`graphics.h`以及其他的`lib`文件，详细请查看[EasyX](https://easyx.cn/)官网<br><br>
 
 * The compiler's compilation environment should be Unicode
 * Make sure the header file contains`CharWar.h`，`prime.h`，`easyx.h`
-* The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details
-* Some function implementations are done by AI<br><br>
+* The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details<br><br>
 
 * 在[软件](https://github.com/LMLBLMY/CharWar/tree/master/Software(%E8%BD%AF%E4%BB%B6))中，<br>
   `CharWar.exe`为游戏的主程序，`CharDows.exe`为游戏的辅助窗口程序，<br>
