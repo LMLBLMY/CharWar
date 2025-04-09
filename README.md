@@ -23,9 +23,14 @@ There is no English version yet<br>
 * The compiler's compilation environment should be Unicode
 * Make sure the header file contains`CharWar.h`，`prime.h`，`easyx.h`
 * The project does not include `easyx.h` and `graphics.h` and other `lib` files, please see the [EasyX](https://easyx.cn/) official website for details
-* Some function implementations are done by GPT
+* Some function implementations are done by GPT<br><br>
 
->[EasyX](https://easyx.cn/)
+* 在[软件](https://github.com/LMLBLMY/CharWar/tree/master/Software(%E8%BD%AF%E4%BB%B6))中，<br>
+  `CharWar.exe`为游戏的主程序，`CharDows.exe`为游戏的辅助窗口程序，<br>
+  `CharChat.exe`为废弃的在线聊天程序，`叉沃Sever.exe`为未完工的服务器程序<br>
+* In[Software](https://github.com/LMLBLMY/CharWar/tree/master/Software(%E8%BD%AF%E4%BB%B6)),<br>
+  `CharWar.exe`is the main program of the game，`CharDows.exe`is the game's auxiliary window program，<br>
+  `CharChat.exe`is an abandoned online chat program，`叉沃Sever.exe`is an unfinished server program<br>
 
 地图的说明(Description of map)
 ---
