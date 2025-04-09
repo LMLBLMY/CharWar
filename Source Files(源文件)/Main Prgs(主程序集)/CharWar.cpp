@@ -1,3 +1,7 @@
+/*此程序为游戏主程序
+This program is the main program of the game
+*///////////////
+
 #include <CharWar.h>
 
 int main()
